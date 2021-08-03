@@ -1,0 +1,311 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    @@media (min-width: 992px) {
+        .col-md-10 {
+            width: 78.3%;
+        }
+    }
+    .row {
+        margin: 1%;
+    }
+
+    .form-group {
+        padding: 0 1% 0 1%;
+        margin-bottom: 0.5%;
+        font-size: 11px;
+    }
+
+    .select2-container .select2-choice {
+        height: 26px;
+        line-height: 1;
+    }
+
+    .form-control {
+        /*width: 100%;*/
+        height: 20%;
+        font-size: 11px;
+    }
+
+    .datepicker {
+        padding: 6px 12px;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+    }
+    /*.modal {
+        padding-right: 30%;
+    }*/
+    #ExpReqCheckMstModal > .modal-dialog {
+        margin-left: 2%;
+    }
+        /*.modal-content {*/
+        #ExpReqCheckMstModal > .modal-dialog > .modal-content {
+            width: 145%;
+            /*height: 453px;*/
+        }
+</style>
+<script src="~/Areas/Requisition/NgCode/frmExpRequisitionCheck.js"></script>
+<div ng-app="myApp" ng-controller="ExpRequisitionCheckCtrl">
+    <div class="loader LoaderStyle" ng-cloak data-loading>
+        <img src="~/Content/img/loader.gif" width="100" height="100" style="top: 50%; left: 50%;" />
+    </div>
+    <div class="form-horizontal" ng-form="frmExpRequisitionCheck">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    <h2 class="box-title">
+                                        <strong ng-cloak>{{FormTitle}}</strong>
+                                    </h2>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="text-right  m-t-10">
+                                        <button type="button" class="btn btn-embossed btn-primary" ng-click="SaveData()" ng-class="{'btn-transparent': frmExpRequisitionCheck.$invalid}" ng-disabled="frmExpRequisitionCheck.$invalid || isSaveDisable"><i class="fa fa-save"></i>&nbspSave</button>
+                                        <button type="button" class="btn btn-embossed btn-danger" ng-click="Reset()"><i class="fa fa-refresh"></i>&nbsp Reset</button>
+                                        <button type="button" class="btn btn-embossed btn-success" ng-click="GetExpCheckedReqMstList()"><i class="fa fa-search"></i>&nbspSearch</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label required"> Requisition No </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control clickable" id="RequisitionNo" name="RequisitionNo" ng-model="RequisitionNo" ng-dblclick="GetExpReqMstList()" placeholder="Please Double Click Here" readonly>
+                                    <input type="text" class="form-control" id="Id" name="Id" ng-model="Id" placeholder="Auto Generate" readonly style="display: none;">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">Requisition Type</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="ReqType" name="ReqType" ng-model="ReqType" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">Expenditure Month</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="ExpenditureMonth" name="ExpenditureMonth" ng-model="ExpenditureMonth" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">{{labelPayToValue}}</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="PayTo" name="PayTo" ng-model="PayTo" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label required">Check Status</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control" id="CheckedStatus" name="CheckedStatus" ng-model="CheckedStatus" ng-init="CheckedStatus=''" required>
+                                        <option value="">Please Select</option>
+                                        <option value="Approved">Approved</option>
+                                        <option value="Not Approved">Not Approved</option>
+                                        <option value="On Hold">On Hold</option>
+                                    </select>
+                                </div><div class="col-md-2">
+                                    <label class="control-label">Payment Place</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="PaymentPlace" name="PaymentPlace" ng-model="PaymentPlace" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label ">Requisition Detail</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <textarea type="text" class="form-control" rows="2" id="PrepareRemarks" name="PrepareRemarks" ng-model="PrepareRemarks" readonly style="border: 2px solid #5199c3;font-size: 12px;"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label ">Remarks</label>
+                                </div>
+                                <div class="col-md-10" ng-class="{'has-error':frmExpRequisitionCheck.CheckedRemarks.$error.maxlength}">
+                                    <textarea type="text" class="form-control" rows="1" id="CheckedRemarks" name="CheckedRemarks" ng-model="CheckedRemarks" ng-maxlength="500"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div id="gridPDtl" ui-grid="gridExpReqCheckDtlOptions" class="grid" style="height: 170px; width: 100%;" ui-grid-auto-resize ui-grid-resize-columns ui-grid-exporter></div>
+                            </div>
+                            <fieldset>
+                                <legend class="uncollapsed collapsable clickable"><i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;Access</legend>
+                                <div class="row">
+                                    <table class="table table-borderless" style="margin-bottom: 5px; background-color:ActiveCaption;">
+                                        <tbody>
+                                            <tr>
+                                                <th>Access</th>
+                                                <th>Name</th>
+                                                <th>Designation</th>
+                                                <th>Date</th>
+                                                @*<th>Remarks</th>*@
+                                            </tr>
+                                            <tr ng-show="PrepareDate">
+                                                <td>Prepare By</td>
+                                                <td>{{PrepareName}}</td>
+                                                <td>{{PrepareDesig}}</td>
+                                                <td>{{PrepareDate}}</td>
+                                                @*<td>{{PrepareRemarks}}</td>*@
+                                            </tr>
+                                            <tr>
+                                                <td>Check By</td>
+                                                <td>[@Session["EMPLOYEE_CODE"].ToString()] @Session["EMPLOYEE_NAME"].ToString()</td>
+                                                <td>@Session["DESIGNATION"].ToString()</td>
+                                                <td>{{CheckedDate}}</td>
+                                                @*<td>{{CheckedRemarks}}</td>*@
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </fieldset>
+                        </div>
+                        @*<div class="form-group">
+                                <div class="col-md-1">
+                                    <button type="button" class="btn small btn-embossed btn-primary" ng-click="showPopUpExpReqCheckDtlOptions()" ng-disabled="frmExpRequisitionCheck.$invalid"><i class="fa fa-plus"></i>&nbsp; Add Item</button>
+                                </div>
+                            </div>*@
+                      
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal fade" id="ExpReqCheckDtlModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Details</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-horizontal" ng-form="frmExpRequisitionCheckModal">
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label required">Mode of Pay.</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="DtlId" name="DtlId" ng-model="DtlId" readonly style="display: none;">
+                                    <input type="text" class="form-control" id="Mop" name="Mop" ng-model="Mop" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label"> Purpose</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <textarea type="text" class="form-control" rows="1" id="Purpose" name="Purpose" ng-model="Purpose" readonly></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label required">Checked Amount</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="CheckedValue" name="CheckedValue" ng-pattern="{{NumberPattern}}" ng-model="CheckedValue" required>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">Amount</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="PrepareValue" name="PrepareValue" ng-model="PrepareValue" readonly>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">From Date</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" placeholder="Calender" id="FromDate" name="FromDate" ng-model="FromDate" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">To Date</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" placeholder="Calender" id="ToDate" name="ToDate" ng-model="ToDate" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">Total Days</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="TotalDays" name="TotalDays" ng-model="TotalDays" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">RequiredDate</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="RequiredDate" name="RequiredDate" ng-model="RequiredDate" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">Remarks</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <textarea type="text" class="form-control" rows="1" id="Remarks" name="Remarks" ng-model="Remarks" readonly></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-7">
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-embossed btn-primary" ng-click="addItemGridExpReqCheckDtlOptions()" ng-disabled="frmExpRequisitionCheckModal.$invalid">Add Item</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="ExpReqCheckMstModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Details</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div id="gridRMst" ui-grid="gridExpReqCheckMstOptions" class="grid" style="height: 270px; width: 100%;" ui-grid-auto-resize ui-grid-resize-columns ui-grid-exporter></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.datepicker').datepicker({
+        todayBtn: "linked",
+        autoclose: true,
+        orientation: 'bottom',
+        todayHighlight: true,
+        format: 'dd/mm/yyyy',
+        changeMonth: true,
+        changeYear: true
+    })
+    //$('legend.collapsable').parents("fieldset").find('.form-group').show();
+    //$('legend.collapsable').parents("fieldset").find('.row').show();
+    //$('legend.collapsable').parents("fieldset").removeAttr("style");
+</script>

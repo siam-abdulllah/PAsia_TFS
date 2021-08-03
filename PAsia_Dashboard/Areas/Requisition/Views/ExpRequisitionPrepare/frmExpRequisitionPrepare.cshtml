@@ -1,0 +1,326 @@
+﻿
+@{
+    /**/
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    @@media (min-width: 992px) {
+        .col-md-10 {
+            width: 78.3%;
+        }
+    }
+
+    .row {
+        margin: 1%;
+    }
+
+    .form-group {
+        padding: 0 1% 0 1%;
+        margin-bottom: 0.5%;
+        font-size: 11px;
+    }
+
+    .select2-container .select2-choice {
+        height: 26px;
+        line-height: 1;
+    }
+
+    .form-control {
+        /*width: 100%;*/
+        height: 20%;
+        font-size: 11px;
+    }
+
+    .datepicker {
+        padding: 6px 12px;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+    }
+    /*.modal {
+        padding-right: 30%;
+    }*/
+    #ExpReqPrepareMstModal > .modal-dialog {
+        margin-left: 2%;
+    }
+        /*.modal-content {*/
+        #ExpReqPrepareMstModal > .modal-dialog > .modal-content {
+            width: 145%;
+            /*height: 453px;*/
+        }
+</style>
+<script src="~/Areas/Requisition/NgCode/frmExpRequisitionPrepare.js"></script>
+<div ng-app="myApp" ng-controller="ExpRequisitionPrepareCtrl">
+    <div class="loader LoaderStyle" ng-cloak data-loading>
+        <img src="~/Content/img/loader.gif" width="100" height="100" style="top: 50%; left: 50%;" />
+    </div>
+    <div class="form-horizontal" ng-form="frmExpRequisitionPrepare">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    <h2 class="box-title">
+                                        <strong ng-cloak>{{FormTitle}}</strong>
+                                    </h2>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="text-right  m-t-10">
+                                        <button type="button" class="btn btn-embossed btn-submit" ng-click="SubmitData()" ng-class="{'btn-transparent': isSubmitDisable}" ng-disabled="isSubmitDisable"><i class="fa fa-send-o"></i>&nbspSubmit</button>
+                                        <button type="button" class="btn btn-embossed btn-primary" ng-click="SaveData()" ng-class="{'btn-transparent': frmExpRequisitionPrepare.$invalid}" ng-disabled="frmExpRequisitionPrepare.$invalid || isSaveDisable"><i class="fa fa-save"></i>&nbsp{{btnSaveValue}}</button>
+                                        <button type="button" class="btn btn-embossed btn-danger" ng-click="Reset()"><i class="fa fa-refresh"></i>&nbsp Reset</button>
+                                        <button type="button" class="btn btn-embossed btn-success" ng-click="GetExpReqMstList()"><i class="fa fa-search"></i>&nbspSearch</button>
+                                        <button type="button" class="btn btn-embossed btn-warning" ng-click="DeleteExpReqMst()" ng-class="{'btn-transparent': !Id}" ng-disabled="!Id || isDeleteDisable"><i class="fa fa-remove"></i>&nbsp Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label"> Requisition No </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="RequisitionNo" name="RequisitionNo" ng-model="RequisitionNo" placeholder="Auto Generate" readonly>
+                                    <input type="text" class="form-control" id="Id" name="Id" ng-model="Id" placeholder="Auto Generate" readonly style="display: none;">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">Requisition Date</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="RequisitionDate" name="RequisitionDate" ng-model="RequisitionDate" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label required">Requisition Type</label>
+                                </div>
+                                <div class="col-md-3">
+
+                                    <ui-select class="form-control form-white" ng-model="frmExpRequisitionPrepare.ReqType" theme="select2" ng-cloak ng-change="LabelPayToValue()" required>
+                                        <ui-select-match placeholder="-- Select --">{{$select.selected.ReqTypeName}}</ui-select-match>
+                                        <ui-select-choices repeat="reqTypes in ReqTypes | propsFilter: {ReqTypeName: $select.search}">
+                                            <div ng-bind-html="reqTypes.ReqTypeName | highlight: $select.search"></div>
+                                            @*<small>
+                                                    <b>Code: </b><span ng-bind-html="''+reqTypes.DepotCode | highlight: $select.search"></span> &nbsp;&nbsp;&nbsp;
+                                                </small>*@
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label required">Expenditure Month</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control form-white input-sm" ng-cloak ng-model="ExpenditureMonth" required>
+                                        <option value="January">January</option>
+                                        <option value="February">February</option>
+                                        <option value="March">March</option>
+                                        <option value="April">April</option>
+                                        <option value="May">May</option>
+                                        <option value="June">June</option>
+                                        <option value="July">July</option>
+                                        <option value="August">August</option>
+                                        <option value="September">September</option>
+                                        <option value="October">October</option>
+                                        <option value="November">November</option>
+                                        <option value="December">December</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label required">{{labelPayToValue}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <ui-select class="form-control form-white" ng-model="frmExpRequisitionPrepare.PayTo" theme="select2" ng-cloak required>
+                                        <ui-select-match placeholder="-- Please Select --">{{$select.selected.PayToName}}</ui-select-match>
+                                        <ui-select-choices repeat="payTos in PayTos | propsFilter: {PayToName: $select.search,PayToCode: $select.search,PayToDesig: $select.search} | limitTo: 100" value="{{$selected.PayTo}}">
+                                            <div ng-bind-html="payTos.PayToName | highlight: $select.search"></div>
+                                            <small>
+                                                <b>Code: </b><span ng-bind-html="''+payTos.PayToCode | highlight: $select.search"></span> &nbsp;&nbsp;&nbsp;
+                                                <b>Desig: </b><span ng-bind-html="''+payTos.PayToDesig | highlight: $select.search"></span> &nbsp;&nbsp;&nbsp;
+                                            </small>
+                                        </ui-select-choices>
+                                    </ui-select>
+
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label class="control-label required">Payment Place</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="PaymentPlace" name="PaymentPlace" ng-model="PaymentPlace" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label ">Requisition Detail</label>
+                                </div>
+                                <div class="col-md-10" ng-class="{'has-error':frmExpRequisitionPrepare.PrepareRemarks.$error.maxlength}">
+                                    <textarea type="text" class="form-control" rows="2" id="PrepareRemarks" name="PrepareRemarks" ng-model="PrepareRemarks" ng-maxlength="500" style="border: 2px solid #5199c3;font-size: 12px;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-1">
+                                <button type="button" class="btn small btn-embossed btn-primary" ng-click="showPopUpExpReqPrepareDtlOptions()" ng-disabled="frmExpRequisitionPrepare.$invalid"><i class="fa fa-plus"></i>&nbsp; Add Item</button>
+                            </div>
+                        </div>
+                        <fieldset>
+                            <legend class="collapsed collapsable clickable"><i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;Amount</legend>
+                            <div class="row">
+                                <div id="gridPDtl" ui-grid="gridExpReqPrepareDtlOptions" class="grid" style="height: 170px; width: 100%;" ui-grid-auto-resize ui-grid-resize-columns ui-grid-exporter></div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="uncollapsed collapsable clickable"><i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;Access</legend>
+                            <div class="row">
+                                <table class="table table-borderless" style="margin-bottom: 5px; background-color:ActiveCaption;">
+                                    <tbody>
+                                        <tr>
+                                            <th>Access</th>
+                                            <th>Name</th>
+                                            <th>Designation</th>
+                                            @*<th>Remarks</th>*@
+                                            <th>Date</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Prepare By</td>
+                                            <td>[@Session["EMPLOYEE_CODE"].ToString()] @Session["EMPLOYEE_NAME"].ToString()</td>
+                                            <td>@Session["DESIGNATION"].ToString()</td>
+                                            @*<td>ok done</td>*@
+                                            <td>{{RequisitionDate}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal fade" id="ExpReqPrepareDtlModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Details</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-horizontal" ng-form="frmExpRequisitionPrepareModal">
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label required">Mode of Pay.</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="DtlId" name="DtlId" ng-model="DtlId" readonly style="display: none;">
+                                    <select class="form-control form-white input-sm" ng-model="Mop" required>
+                                        <option value="Cash">Cash</option>
+                                        <option value="Cheque">Cheque</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label required"> Purpose</label>
+                                </div>
+                                <div class="col-md-3" ng-class="{'has-error':frmExpRequisitionPrepareModal.Purpose.$error.maxlength}">
+                                    <textarea type="text" class="form-control" rows="1" id="Purpose" name="Purpose" ng-model="Purpose" ng-maxlength="100" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label required">Amount</label>
+                                </div>
+                                <div class="col-md-3" ng-class="{'has-error':frmExpRequisitionPrepareModal.PrepareValue.$error.pattern}">
+                                    <input type="text" class="form-control" id="PrepareValue" name="PrepareValue" ng-pattern="{{NumberPattern}}" ng-model="PrepareValue">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">Remarks</label>
+                                </div>
+                                <div class="col-md-3" ng-class="{'has-error':frmExpRequisitionPrepareModal.Remarks.$error.maxlength}">
+                                    <textarea type="text" class="form-control" rows="1" id="Remarks" name="Remarks" ng-model="Remarks" ng-maxlength="100"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label required">From Date</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control datepicker clickable" placeholder="Calender" id="FromDate" name="FromDate" ng-model="FromDate" readonly required ng-change="DateCompare()">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label required">To Date</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control datepicker clickable" placeholder="Calender" id="ToDate" name="ToDate" ng-model="ToDate" readonly required ng-change="DateCompare()">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label">Total Days</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="TotalDays" name="TotalDays" ng-model="TotalDays" readonly required>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="control-label required">Required Date</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control datepicker clickable" placeholder="Calender" id="RequiredDate" name="RequiredDate" ng-model="RequiredDate" readonly required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-7">
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-embossed btn-primary" ng-click="addItemGridExpReqPrepareDtlOptions()" ng-disabled="frmExpRequisitionPrepareModal.$invalid">Add Item</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="ExpReqPrepareMstModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Details</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div id="gridRMst" ui-grid="gridExpReqPrepareMstOptions" class="grid" style="height: 270px; width: 100%;" ui-grid-auto-resize ui-grid-resize-columns ui-grid-exporter></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('.datepicker').datepicker({
+        todayBtn: "linked",
+        autoclose: true,
+        orientation: 'bottom',
+        todayHighlight: true,
+        format: 'dd/mm/yyyy',
+        changeMonth: true,
+        changeYear: true
+    })
+    //$('legend.collapsable').parents("fieldset").find('.form-group').show();
+    //$('legend.collapsable').parents("fieldset").find('.row').show();
+    //$('legend.collapsable').parents("fieldset").removeAttr("style");
+</script>

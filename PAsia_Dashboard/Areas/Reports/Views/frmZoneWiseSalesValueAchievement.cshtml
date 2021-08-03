@@ -1,0 +1,159 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    
+</style>
+<script src="~/Areas/Reports/NgCode/frmZoneWiseSalesValueAchievement.js"></script>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <div class="form-horizontal" ng-form="frmZoneWiseSalesValueAchievement">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    <h2 class="box-title">
+                                        <strong>{{FormTitle}}</strong>
+                                    </h2>
+                                </div>
+                            </div>
+                            <br />
+                            @*<div class="row dashboard" ng-hide="ACCESS_LEVEL==='' || ACCESS_LEVEL===null">
+                                    <div class="col-md-2 col-md-offset-1">
+                                        <!-- small box -->
+                                        <div class="small-box bg-blue">
+
+                                            <div class="inner">
+                                                <p>Comm. Stock Valuation (Lac)</p>
+                                                <h3>{{dashboardData.Commercial_Stock_Valuation=== "" ? "0": dashboardData.Commercial_Stock_Valuation}}৳</h3>
+                                            </div>
+
+                                            <div class="icon">
+                                                <i class="ion ion-pie-graph"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-md-2">
+                                        <!-- small box -->
+                                        <div class="small-box bg-red">
+                                            <div class="inner">
+                                                <p>Sample Stock Valuation (Lac)</p>
+                                                <h3>{{dashboardData.Sample_Stock_Valuation=== "" ? "0": dashboardData.Sample_Stock_Valuation}}৳</h3>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-stats-bars"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-md-2">
+                                        <!-- small box -->
+                                        <div class="small-box bg-orange">
+                                            <div class="inner">
+                                                <p>PPM Stock Valuation (Lac)</p>
+                                                <h3>{{dashboardData.PPM_Stock_Valuation=== "" ? "0": dashboardData.PPM_Stock_Valuation}}৳</h3>
+
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-person-add"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-md-2">
+                                        <!-- small box -->
+                                        <div class="small-box bg-maroon">
+                                            <div class="inner">
+                                                <p>Gift Stock Valuation (Lac)</p>
+                                                <h3>{{dashboardData.Gift_Stock_Valuation=== "" ? "0": dashboardData.Gift_Stock_Valuation}}৳</h3>
+
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-pie-graph"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-md-2">
+                                        <!-- small box -->
+                                        <div class="small-box bg-teal">
+                                            <div class="inner">
+                                                <p>Total Stock Valuation (Lac)</p>
+                                                <h3>{{dashboardData.Total_Stock_Valuation=== "" ? "0": dashboardData.Total_Stock_Valuation}}৳</h3>
+
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-pie-graph"></i>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>*@
+                        </div>
+                        <div class="box-body">
+                            <form role="form">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-1">
+                                            <label class="control-label required">From</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control pull-right datepicker" ng-model="FromDate" required readonly>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <label class="control-label required">To</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control pull-right datepicker" ng-model="ToDate" required readonly>
+                                        </div>
+                                        <div class="col-md-4" style="padding-top: 3px;">
+
+                                            <button type="button" class="btn btn-embossed btn-success" ng-click="GetZoneWiseSalesValueAchievement()" ng-class="{'btn-transparent': frmZoneWiseSalesProductAchievement.$invalid}" ng-disabled="frmZoneWiseSalesProductAchievement.$invalid"><i class="fa fa-search"></i>Search</button>
+                                            <button type="button" class="btn btn-embossed btn-danger" ng-click="Reset()"><i class="fa fa-refresh"></i>&nbsp Reset</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <fieldset>
+                            <legend>Zone Wise Sales (Value)</legend>
+                            <div id="gridZWiseSalesAchValue" ui-grid="gridZWiseSalesAchOptionsValue" class="grid" style="height: 250px; width: 100%;" ui-grid-auto-resize ui-grid-resize-columns ui-grid-grouping ui-grid-exporter></div>
+
+                        </fieldset>
+                    </div>
+                    <br />
+                    @*<div class="row">
+                                <fieldset>
+                                    <legend>Zone Wise Sales (Value)</legend>
+                                    <div id="gridZWiseSalesAchProduct" ui-grid="gridZWiseSalesAchOptionsProduct" class="grid" style="height: 200px; width: 100%;" ui-grid-auto-resize ui-grid-resize-columns ui-grid-grouping ui-grid-exporter></div>
+                                </fieldset>
+                                </div>
+                        </div>*@
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script>
+    $('.datepicker').datepicker({
+        todayBtn: "linked",
+        autoclose: true,
+        todayHighlight: true,
+        format: 'dd/mm/yyyy',
+        changeMonth: true,
+        changeYear: true
+    })
+    
+</script>
+
