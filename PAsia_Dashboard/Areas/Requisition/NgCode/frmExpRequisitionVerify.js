@@ -84,6 +84,7 @@
         },
             function (response) {
                 if (response.status === 404) {
+                   // alert(response.data);
                     toastr.warning("Error Loading Requisition Type!", { timeOut: 2000 });
                 }
             });

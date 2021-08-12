@@ -59,6 +59,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                 ApprovedDate = row["APPROVED_DATE"].ToString(),
                                 ApprovedStatus = row["APPROVED_STATUS"].ToString()
                             }).ToList();
+               // _auditTrailDAO.InsertAudit("frmExpRequisitionApprove", "EXP_REQUISITION_MST", IUMode, MaxID, "Done", "Test", "tapu.it@pharmasia.com.bd");
                 return item;
 
             }
@@ -298,7 +299,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "</tr>" +
                                                         "</tbody>" +
                                                    "</table>"
-                                                   + "</br>Requsition Detail: " + expReqPrepareMstInfo.PrepareRemarks
+                                                   + "</br>Requisition Detail: " + expReqPrepareMstInfo.PrepareRemarks
                                                    + "</br>"
                                                    + "</br>Total Amount: " + expReqPrepareMstInfo.TotalApprovedAmt
                                                    + "</br>Click Here: " + tag;
@@ -512,7 +513,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "</tr>" +
                                                         "</tbody>" +
                                                    "</table>"
-                                                   + "</br>Requsition Detail: " + expReqPrepareMstInfo.PrepareRemarks
+                                                   + "</br>Requisition Detail: " + expReqPrepareMstInfo.PrepareRemarks
                                                    + "</br>"
                                                    + "</br>Total Amount: " + expReqPrepareMstInfo.TotalApprovedAmt
                                                    + "</br>Click Here: " + tag;

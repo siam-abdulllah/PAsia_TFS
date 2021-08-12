@@ -286,7 +286,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                         "</tr>" +
                                                     "</tbody>" +
                                                "</table>"
-                                               + "</br>Requsition Detail: " + expReqPrepareMstInfo.PrepareRemarks
+                                               + "</br>Requisition Detail: " + expReqPrepareMstInfo.PrepareRemarks
                                                + "</br>"
                                                + "</br>Total Amount: " + expReqPrepareMstInfo.TotalApprovedAmt
                                                + "</br>Click Here: " + tag;
@@ -378,7 +378,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                             trans.Commit();
                             if (expReqPrepareMstInfo.RecommendedStatus == "Approved")
                             {
-                                string tag = string.Format(@"<a href='http://" + HttpContext.Current.Request.Url.Authority + ("/Requisition/ExpRequisitionApprove/frmExpRequisitionApprove") + "'> Requisition Apporove</a>");
+                                string tag = string.Format(@"<a href='http://" + HttpContext.Current.Request.Url.Authority + ("/Requisition/ExpRequisitionApprove/frmExpRequisitionApprove") + "'> Requisition Approve</a>");
                                 var mailBody = "A Requisition <b><u>(" + expReqPrepareMstInfo.RequisitionNo + ")</u></b> has been recommended.</br></br>" +
                                     "<table border='1' style='border: 1px solid black;'>" +
                                                     "<tbody>" +
@@ -414,7 +414,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                         "</tr>" +
                                                     "</tbody>" +
                                                "</table>"
-                                               + "</br>Requsition Detail: " + expReqPrepareMstInfo.PrepareRemarks
+                                               + "</br>Requisition Detail: " + expReqPrepareMstInfo.PrepareRemarks
                                                + "</br>"
                                                + "</br>Total Amount: " + expReqPrepareMstInfo.TotalApprovedAmt
                                                + "</br>Click Here: " + tag;

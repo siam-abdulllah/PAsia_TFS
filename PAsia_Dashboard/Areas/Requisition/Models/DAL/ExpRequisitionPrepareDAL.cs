@@ -461,7 +461,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                         "</tr>" +
                                                     "</tbody>" +
                                                "</table>" 
-                                               + "</br>Requsition Detail: " + expReqPrepareMstInfo.PrepareRemarks
+                                               + "</br>Requisition Detail: " + expReqPrepareMstInfo.PrepareRemarks
                                                + "</br>"
                                                + "</br>Total Amount: " + expReqPrepareMstInfo.TotalApprovedAmt
                                                + "</br>Click Here: " + tag;

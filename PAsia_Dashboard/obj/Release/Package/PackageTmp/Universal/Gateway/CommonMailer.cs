@@ -54,10 +54,16 @@ namespace PAsia_Dashboard.Universal.Gateway
                         //sc.Credentials = new
                         //System.Net.NetworkCredential("testsquare80@gmail.com", "Aa01520104711");
 
-                        sc.Host = "mail.pharmasia.com.bd";
-                        sc.Port = 587;
-                        sc.Credentials = new System.Net.NetworkCredential("notification@pharmasia.com.bd", "Pharma@IT#10");
-                        sc.EnableSsl = true;
+                        //sc.Host = "mail.pharmasia.com.bd";
+                        //sc.Port = 587;
+                        //sc.Credentials = new System.Net.NetworkCredential("notification@pharmasia.com.bd", "Pharma@IT#10"); 
+                        
+                        //sc.Host = "mail.x-mail.asia";
+                        sc.Host = "103.17.181.20";
+                        //sc.Port = 587;
+                        sc.Port = 25;
+                        sc.Credentials = new System.Net.NetworkCredential("notification@pharmasia.com.bd", "pharmasia@321#");
+                        //sc.EnableSsl = true;
                         sc.Send(m);
                     }
                 }
