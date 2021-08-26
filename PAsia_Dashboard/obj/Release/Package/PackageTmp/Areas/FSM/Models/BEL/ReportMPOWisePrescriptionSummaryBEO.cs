@@ -9,33 +9,34 @@ namespace PAsia_Dashboard.Areas.FSM.Models.BEL.BEO
     {
 
         public int SL_NO { get; set; }
-        public string USER_NAME { get; internal set; }
-        public string REGION_NAME { get; internal set; }
-        public string AREA_NAME { get; internal set; }
-        public string TERRITORY_NAME { get; internal set; }
-        public string NO_OF_OTHER_PRES { get; internal set; }
-        public string TOTAL_PRES { get; internal set; }
-        public string TOTAL_PRODUCT { get; internal set; }
-        public string TOTAL_XELPRO { get; internal set; }
-        public string TOTAL_XELPRO_MUPS { get; internal set; }
-        public string TOTAL_CARDOTEL { get; internal set; }
-        public string TOTAL_FUXTIL { get; internal set; }
-        public string TOTAL_OTHERS { get; internal set; }
+        public string USER_NAME { get;  set; }
+        public string REGION_NAME { get;  set; }
+        public string AREA_NAME { get;  set; }
+        public string TERRITORY_NAME { get;  set; }
+        public string NO_OF_OTHER_PRES { get;  set; }
+        public string TOTAL_PRES { get;  set; }
+        public string TOTAL_PRODUCT { get;  set; }
+        public string TOTAL_XELPRO { get;  set; }
+        public string TOTAL_XELPRO_MUPS { get;  set; }
+        public string TOTAL_CARDOTEL { get;  set; }
+        public string TOTAL_FUXTIL { get;  set; }
+        public string TOTAL_OTHERS { get;  set; }
         public string TOTAL_EZYLIFE { get; set; }
         public string TOTAL_MONKAST { get; set; }
         public string ZONE_NAME { get; set; }
         public string USER_ID { get; set; }
         public string TOTAL_BIONIC { get; set; }
-        public string TOTAL_EZYLIFE_KID { get; internal set; }
-        public string NO_OF_OPD_PRES { get; internal set; }
-        public string TOTAL_STROMEC { get; internal set; }
-        public string TOTAL_DEEP_HEAT_NIGHT_RELIEF { get; internal set; }
-        public string TOTAL_SWEET_DROPS { get; internal set; }
-        public string TOTAL_RY_JELLY { get; internal set; }
-        public string TOTAL_AZEXIA { get; internal set; }
-        public string TOTAL_CLONZY { get; internal set; }
-        public string TOTAL_EMIREST { get; internal set; }
-        public string TOTAL_NAPRONIL_PLUS { get; internal set; }
-        public string TOTAL_VELOFIX { get; internal set; }
+        public string TOTAL_EZYLIFE_KID { get;  set; }
+        public string NO_OF_OPD_PRES { get;  set; }
+        public string TOTAL_STROMEC { get;  set; }
+        public string TOTAL_DEEP_HEAT_NIGHT_RELIEF { get;  set; }
+        public string TOTAL_SWEET_DROPS { get;  set; }
+        public string TOTAL_RY_JELLY { get;  set; }
+        public string TOTAL_AZEXIA { get;  set; }
+        public string TOTAL_CLONZY { get;  set; }
+        public string TOTAL_EMIREST { get;  set; }
+        public string TOTAL_NAPRONIL_PLUS { get;  set; }
+        public string TOTAL_VELOFIX { get;  set; }
+        public string TOTAL_RETROVIR { get;  set; }
     }
 }

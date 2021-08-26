@@ -195,6 +195,7 @@
         { name: "TOTAL_EMIREST", displayName: "Total  Emirest", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_NAPRONIL_PLUS", displayName: "Total  Napronil Plus", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_VELOFIX", displayName: "Total  Velofix", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
+        { name: "TOTAL_RETROVIR", displayName: "Total  Retrovir", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_OTHERS", displayName: "Total Others Product", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' }
     ];
 

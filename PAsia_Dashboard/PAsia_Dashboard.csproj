@@ -822,6 +822,7 @@
     <Content Include="Content\img\load1.gif" />
     <Content Include="Content\img\load3.gif" />
     <Content Include="Content\img\loader.gif" />
+    <Content Include="Content\img\logo.JPG" />
     <Content Include="Content\img\PAsiaBanner_LOGIN.jpg" />
     <Content Include="Content\img\pAsia_Logo.png" />
     <Content Include="Content\img\photo1.png" />

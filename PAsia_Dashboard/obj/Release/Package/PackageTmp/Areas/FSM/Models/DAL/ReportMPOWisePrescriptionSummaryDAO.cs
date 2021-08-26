@@ -123,6 +123,7 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_EMIREST = row["TOTAL_EMIREST"].ToString(),
                                     TOTAL_NAPRONIL_PLUS = row["TOTAL_NAPRONIL_PLUS"].ToString(),
                                     TOTAL_VELOFIX = row["TOTAL_VELOFIX"].ToString(),
+                                    TOTAL_RETROVIR = row["TOTAL_RETROVIR"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
@@ -188,6 +189,7 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_EMIREST = row["TOTAL_EMIREST"].ToString(),
                                     TOTAL_NAPRONIL_PLUS = row["TOTAL_NAPRONIL_PLUS"].ToString(),
                                     TOTAL_VELOFIX = row["TOTAL_VELOFIX"].ToString(),
+                                    TOTAL_RETROVIR = row["TOTAL_RETROVIR"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
@@ -252,6 +254,7 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_EMIREST = row["TOTAL_EMIREST"].ToString(),
                                     TOTAL_NAPRONIL_PLUS = row["TOTAL_NAPRONIL_PLUS"].ToString(),
                                     TOTAL_VELOFIX = row["TOTAL_VELOFIX"].ToString(),
+                                    TOTAL_RETROVIR = row["TOTAL_RETROVIR"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
@@ -316,6 +319,7 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_EMIREST = row["TOTAL_EMIREST"].ToString(),
                                     TOTAL_NAPRONIL_PLUS = row["TOTAL_NAPRONIL_PLUS"].ToString(),
                                     TOTAL_VELOFIX = row["TOTAL_VELOFIX"].ToString(),
+                                    TOTAL_RETROVIR = row["TOTAL_RETROVIR"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
