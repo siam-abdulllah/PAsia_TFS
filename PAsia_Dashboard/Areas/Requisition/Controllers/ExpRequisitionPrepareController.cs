@@ -42,6 +42,12 @@ namespace PAsia_Dashboard.Areas.Requisition.Controllers
         {
             var data = _expRequisitionPrepareDAL.GetPayTo(param);
             return Json(new { Data = data, Status = "Ok" });
+        } 
+        [HttpPost]
+        public ActionResult GetPaymentPlace(string param)
+        {
+            var data = _expRequisitionPrepareDAL.GetPaymentPlace(param);
+            return Json(new { Data = data, Status = "Ok" });
         }
         [HttpPost]
         public ActionResult GetExpReqMstList(string param)

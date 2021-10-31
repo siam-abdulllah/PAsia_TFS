@@ -151,7 +151,7 @@
         var r = row;
         $http({
             method: "POST",
-            url: MyApp.rootPath + "ReportMPOWisePrescription/GetMPOWisePrescriptionData",
+            url: MyApp.rootPath + "ReportDoctorWiseProdPrescr/GetMPOWisePrescriptionData",
             params: { ZoneCode: row.entity.ZONE_CODE, RegionCode: row.entity.REGION_CODE, AreaCode: row.entity.AREA_CODE, TerritoryCode: row.entity.TERRITORY_CODE, FromDate: $scope.FromDate, ToDate: $scope.ToDate, DoctorCode: row.entity.DOCTOR_CODE, ProdType: $scope.frmReportDoctorWiseProdPrescr.ProdType}
         }).then(function (response) {
             if (response.data.Status === null || response.data.Status === undefined) {

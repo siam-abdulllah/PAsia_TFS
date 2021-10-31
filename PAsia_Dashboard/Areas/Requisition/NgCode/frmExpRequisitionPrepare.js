@@ -91,6 +91,28 @@
             });
     };
     $scope.GetPayTo();
+    //--------Payment Place--------//
+
+    $scope.GetPaymentPlace = function () {
+        $http({
+            method: "POST",
+            url: MyApp.rootPath + "ExpRequisitionPrepare/GetPaymentPlace"
+        }).then(function (response) {
+            if (response.data.Status === "Ok") {
+                if (response.data.Data.length > 0) {
+                    $scope.PaymentPlaces = response.data.Data;
+                }
+            } else {
+                toastr.warning(response.data.Status, { timeOut: 2000 });
+            }
+        },
+            function (response) {
+                if (response.status === 404) {
+                    toastr.warning("Error Loading Requisition Type!", { timeOut: 2000 });
+                }
+            });
+    };
+    $scope.GetPaymentPlace();
 
     //-----------------------Insert ----------------------------//
     $scope.DateCompare = function () {
@@ -133,7 +155,7 @@
         $scope.SaveDb.ReqTypeName = $scope.frmExpRequisitionPrepare.ReqType.ReqTypeName;
         $scope.SaveDb.ExpenditureMonth = $scope.ExpenditureMonth;
         $scope.SaveDb.PayToCode = $scope.frmExpRequisitionPrepare.PayTo.PayToCode;
-        $scope.SaveDb.PaymentPlace = $scope.PaymentPlace;
+        $scope.SaveDb.PaymentPlace = $scope.frmExpRequisitionPrepare.PaymentPlace.PaymentPlace;
         $scope.SaveDb.PrepareRemarks = $scope.PrepareRemarks;
         $scope.SaveDb.TotalApprovedAmt = $scope.gridExpReqPrepareDtlApi.grid.columns[3].getAggregationValue();
         var methodName = "";
@@ -180,7 +202,7 @@
         $scope.SaveDb.ReqTypeName = $scope.frmExpRequisitionPrepare.ReqType.ReqTypeName;
         $scope.SaveDb.ExpenditureMonth = $scope.ExpenditureMonth;
         $scope.SaveDb.PayToCode = $scope.frmExpRequisitionPrepare.PayTo.PayToCode;
-        $scope.SaveDb.PaymentPlace = $scope.PaymentPlace;
+        $scope.SaveDb.PaymentPlace = $scope.frmExpRequisitionPrepare.PaymentPlace.PaymentPlace;
         $scope.SaveDb.PrepareRemarks = $scope.PrepareRemarks;
         $scope.SaveDb.TotalApprovedAmt = $scope.gridExpReqPrepareDtlApi.grid.columns[3].getAggregationValue();
         $http({
@@ -305,7 +327,7 @@
             $scope.labelPayToValue = "Pay To";
         }
         $scope.frmExpRequisitionPrepare.PayTo = row.entity;
-        $scope.PaymentPlace = row.entity.PaymentPlace;
+        $scope.frmExpRequisitionPrepare.PaymentPlace = row.entity;
         $scope.ExpenditureMonth = row.entity.ExpenditureMonth;
         $scope.PrepareRemarks = row.entity.PrepareRemarks;
         $scope.PrepareDate = row.entity.PrepareDate;
@@ -476,7 +498,7 @@
         $scope.ExpenditureMonth = monthNames[date.getMonth()];
         $scope.frmExpRequisitionPrepare.PayTo = undefined;
         $scope.PrepareRemarks = "";
-        $scope.PaymentPlace = "";
+        $scope.frmExpRequisitionPrepare.PaymentPlace = undefined;
         $scope.gridExpReqPrepareDtlOptions.data = [];
         $scope.gridExpReqPrepareDtlOptions.columnDefs[9].visible = true;
         $scope.gridExpReqPrepareDtlOptions.columnDefs[10].visible = true;

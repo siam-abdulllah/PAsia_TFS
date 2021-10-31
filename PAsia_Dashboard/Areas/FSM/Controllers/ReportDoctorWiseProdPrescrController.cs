@@ -25,5 +25,13 @@ namespace PAsia_Dashboard.Areas.FSM.Controllers
             return data;
 
         }
+        [HttpPost]
+        public ActionResult GetMPOWisePrescriptionData(string depotCode, string zoneCode, string regionCode, string areaCode, string territoryCode, string fromDate, string toDate, string doctorCode, string ProdType)
+        {
+            var listData = reportDoctorWiseProdPrescrDAO.GetMPOWisePrescriptionData(depotCode, zoneCode, regionCode, areaCode, territoryCode, fromDate, toDate, doctorCode, ProdType);
+            var data = Json(listData, JsonRequestBehavior.AllowGet);
+            data.MaxJsonLength = int.MaxValue;
+            return data;
+        }
     }
 }

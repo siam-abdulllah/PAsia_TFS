@@ -44,6 +44,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
         {
             try
             {
+                
                 string empCode = HttpContext.Current.Session["EMPLOYEE_CODE"].ToString();
                 string qry = "SELECT A.MST_ID, A.REQUISITION_NO, TO_CHAR(A.REQUISITION_DATE,'dd/MM/YYYY') REQUISITION_DATE,A.REQUISITION_TYPE, A.EXPENDITURE_MONTH, " +
                     " A.PAY_TO,B.EMPLOYEE_NAME,C.DESIG_NAME,A.PAYMENT_PLACE, " +
@@ -52,7 +53,8 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                     " NVL(A.APPROVED_STATUS,'Pending') APPROVED_STATUS,TO_CHAR(A.CHECKED_DATE,'dd/MM/YYYY') CHECKED_DATE,TO_CHAR(A.VERIFIED_DATE,'dd/MM/YYYY') VERIFIED_DATE," +
                     " TO_CHAR(A.RECOMMENDED_DATE,'dd/MM/YYYY') RECOMMENDED_DATE,TO_CHAR(A.APPROVED_DATE,'dd/MM/YYYY') APPROVED_DATE," +
                     " NVL(A.PREPARED_BY_CONFIRM,'No') PREPARED_BY_CONFIRM FROM EXP_REQUISITION_MST A INNER JOIN EMPLOYEE_INFO B " +
-                    " ON A.PAY_TO=B.EMPLOYEE_CODE INNER JOIN SC_DESIGNATION C ON B.DESIGNATION=C.DESIG_CODE WHERE 1=1 AND A.PREPARED_BY=" + empCode + " " + param + " " +
+                    " ON A.PAY_TO=B.EMPLOYEE_CODE INNER JOIN SC_DESIGNATION C ON B.DESIGNATION=C.DESIG_CODE WHERE 1=1 " +
+                    " AND A.PREPARED_BY=" + empCode + " " + param + " " +
                     " ORDER BY    REQUISITION_NO DESC";
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
@@ -149,6 +151,26 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                 PayToName = row["EMPLOYEE_NAME"].ToString(),
                                 PayToCode = row["EMPLOYEE_CODE"].ToString(),
                                 PayToDesig = row["DESIG_NAME"].ToString()
+                            }).ToList();
+                return item;
+
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+        //-------Payment Place ------//
+        public object GetPaymentPlace(string param)
+        {
+            try
+            {
+                string qry = "SELECT DISTINCT UNIT_NAME FROM SC_COMP_UNIT ORDER BY UNIT_NAME";
+                DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
+                var item = (from DataRow row in dt.Rows
+                            select new ExpReqPrepareMst
+                            {
+                                PaymentPlace = row["UNIT_NAME"].ToString()
                             }).ToList();
                 return item;
 
@@ -443,7 +465,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                         if (noOfRowsMst > 0)
                         {
                             trans.Commit();
-                            string tag = string.Format(@"<a href='http://"+HttpContext.Current.Request.Url.Authority+("/Requisition/ExpRequisitionCheck/frmExpRequisitionCheck")+"'>Requisition Check</a>");
+                            string tag = string.Format(@"<a href='http://" + HttpContext.Current.Request.Url.Authority + ("/Requisition/ExpRequisitionCheck/frmExpRequisitionCheck") + "'>Requisition Check</a>");
                             var mailBody = "A Requisition <b><u>(" + expReqPrepareMstInfo.RequisitionNo + ")</u></b> has been generated.</br></br>" +
                                 "<table border='1' style='border: 1px solid black;'>" +
                                                     "<tbody>" +
@@ -455,12 +477,12 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                         "</tr>" +
                                                         "<tr>" +
                                                             "<td>Prepared By</td>" +
-                                                            "<td>[" + empCode + "] " + empName+ "</td>" +
+                                                            "<td>[" + empCode + "] " + empName + "</td>" +
                                                             "<td>" + empDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareDate + "</td>" +
                                                         "</tr>" +
                                                     "</tbody>" +
-                                               "</table>" 
+                                               "</table>"
                                                + "</br>Requisition Detail: " + expReqPrepareMstInfo.PrepareRemarks
                                                + "</br>"
                                                + "</br>Total Amount: " + expReqPrepareMstInfo.TotalApprovedAmt
