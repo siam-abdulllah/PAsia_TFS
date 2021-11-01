@@ -99,8 +99,10 @@ namespace PAsia_Dashboard.Areas.Dashboard.Models.DAO
                 homeDashboard.XelproSale = GetProductSalesValue(accessLevelParam, "DATE_WISE_XELPRO_SALES");
                 homeDashboard.EzylifeVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0170','C0171','C0175','C0195')", "DATE_WISE_PROD_SALES");
                 //homeDashboard.FuxtilVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0055','C0056','C0057','C0058','C0059','C0060','C0061','C0062')", "DATE_WISE_PROD_SALES");
-                homeDashboard.SweetDropsVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0191')", "DATE_WISE_PROD_SALES");
-                homeDashboard.SweetDropsQTY = GetProductSalesQTY(accessLevelParam + " AND PRODUCT_CODE IN ('C0191')", "DATE_WISE_PROD_SALES");
+                //homeDashboard.SweetDropsVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0191')", "DATE_WISE_PROD_SALES");
+               // homeDashboard.SweetDropsQTY = GetProductSalesQTY(accessLevelParam + " AND PRODUCT_CODE IN ('C0191')", "DATE_WISE_PROD_SALES");
+                homeDashboard.GavicoolVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0198')", "DATE_WISE_PROD_SALES");
+                homeDashboard.GavicoolQTY = GetProductSalesQTY(accessLevelParam + " AND PRODUCT_CODE IN ('C0198')", "DATE_WISE_PROD_SALES");
                 //homeDashboard.SweetDropsRtrn = GetProductRtrnQTY(accessLevelParam + " AND PRODUCT_CODE IN ('C0191')");
                 homeDashboard.AllProdRtrn = GetAllProductRtrnQTY(accessLevelParam);
                 homeDashboard.DCCTotalSale = GetDCC_Sale(accessLevelParam);

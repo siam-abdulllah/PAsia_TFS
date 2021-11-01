@@ -132,7 +132,6 @@ E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\bin\Microsoft.AI.Web.xml
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\obj\Release\PAsia_Dashboard.dll
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\obj\Release\PAsia_Dashboard.pdb
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\obj\Release\PAsia_Dashboard.csproj.CoreCompileInputs.cache
-E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\obj\Release\PAsia_Dashboard.csproj.CopyComplete
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.CrystalReports.Engine.dll
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportSource.dll
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.Shared.dll

@@ -152,6 +152,8 @@ namespace PAsia_Dashboard.Areas.Dashboard.Models.BEL
         public string POSTING_LOCATION { get; internal set; }
         public SweetDropsRtrn SweetDropsRtrn { get;  set; }
         public AllProdRtrn AllProdRtrn { get;  set; }
+        public ProductValueSale GavicoolVal { get; internal set; }
+        public ProductQTYSale GavicoolQTY { get; internal set; }
     }
     public class DashboardChart
     {

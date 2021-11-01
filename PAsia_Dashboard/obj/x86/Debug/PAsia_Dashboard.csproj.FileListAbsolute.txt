@@ -83,7 +83,6 @@ E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\bin\System.Web.WebPages.Razor.xml
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\bin\Antlr3.Runtime.pdb
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\bin\Newtonsoft.Json.xml
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\obj\x86\Debug\PAsia_Dashboard.csproj.CoreCompileInputs.cache
-E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\obj\x86\Debug\PAsia_Dashboard.csproj.CopyComplete
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\obj\x86\Debug\PAsia_Dashboard.dll
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\obj\x86\Debug\PAsia_Dashboard.pdb
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\obj\x86\Debug\PAsia_Dashboard.csproj.AssemblyReference.cache
