@@ -125,6 +125,7 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_VELOFIX = row["TOTAL_VELOFIX"].ToString(),
                                     TOTAL_RETROVIR = row["TOTAL_RETROVIR"].ToString(),
                                     TOTAL_GAVICOOL = row["TOTAL_GAVICOOL"].ToString(),
+                                    TOTAL_AIRUP = row["TOTAL_AIRUP"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
@@ -192,6 +193,7 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_VELOFIX = row["TOTAL_VELOFIX"].ToString(),
                                     TOTAL_RETROVIR = row["TOTAL_RETROVIR"].ToString(),
                                     TOTAL_GAVICOOL = row["TOTAL_GAVICOOL"].ToString(),
+                                    TOTAL_AIRUP = row["TOTAL_AIRUP"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
@@ -258,6 +260,7 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_VELOFIX = row["TOTAL_VELOFIX"].ToString(),
                                     TOTAL_RETROVIR = row["TOTAL_RETROVIR"].ToString(),
                                     TOTAL_GAVICOOL = row["TOTAL_GAVICOOL"].ToString(),
+                                    TOTAL_AIRUP = row["TOTAL_AIRUP"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
@@ -324,6 +327,7 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_VELOFIX = row["TOTAL_VELOFIX"].ToString(),
                                     TOTAL_RETROVIR = row["TOTAL_RETROVIR"].ToString(),
                                     TOTAL_GAVICOOL = row["TOTAL_GAVICOOL"].ToString(),
+                                    TOTAL_AIRUP = row["TOTAL_AIRUP"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;

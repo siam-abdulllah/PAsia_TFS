@@ -197,6 +197,7 @@
         { name: "TOTAL_VELOFIX", displayName: "Total  Velofix", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_RETROVIR", displayName: "Total  Retrovir", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_GAVICOOL", displayName: "Total Gavicool", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
+        { name: "TOTAL_AIRUP", displayName: "Total Airup", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_OTHERS", displayName: "Total Others Product", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' }
     ];
 

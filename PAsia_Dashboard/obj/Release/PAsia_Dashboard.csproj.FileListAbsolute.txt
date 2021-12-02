@@ -153,3 +153,4 @@ E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\bin\System.Diagnostics.DiagnosticSource.
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\bin\System.Diagnostics.DiagnosticSource.xml
 E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\obj\Release\PAsia_Dashboard.csproj.AssemblyReference.cache
+E:\PharmaASIA\PAsia_TFS\PAsia_Dashboard\obj\Release\PAsia_Dashboard.csproj.CopyComplete

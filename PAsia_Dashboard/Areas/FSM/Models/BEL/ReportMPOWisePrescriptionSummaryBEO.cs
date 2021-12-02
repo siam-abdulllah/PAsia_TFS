@@ -39,5 +39,6 @@ namespace PAsia_Dashboard.Areas.FSM.Models.BEL.BEO
         public string TOTAL_VELOFIX { get;  set; }
         public string TOTAL_RETROVIR { get;  set; }
         public string TOTAL_GAVICOOL { get; set; }
+        public string TOTAL_AIRUP { get;  set; }
     }
 }
