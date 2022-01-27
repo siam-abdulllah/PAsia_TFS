@@ -199,6 +199,7 @@
         { name: "TOTAL_GAVICOOL", displayName: "Total Gavicool", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_VCENT", displayName: "Total Vcent", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_AIRUP", displayName: "Total Airup", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
+        { name: "TOTAL_RINOBIL", displayName: "Total Rinobil", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_OTHERS", displayName: "Total Others Product", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' }
     ];
 
