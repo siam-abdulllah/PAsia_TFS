@@ -223,6 +223,7 @@
     <Compile Include="Areas\Reports\Controllers\ProdWiseSalesAchievementController.cs" />
     <Compile Include="Areas\Reports\Controllers\RSMWiseSalesAchievementController.cs" />
     <Compile Include="Areas\Reports\Controllers\StockProdSalesController.cs" />
+    <Compile Include="Areas\Reports\Controllers\TargetSalesController.cs" />
     <Compile Include="Areas\Reports\Controllers\ZoneWiseSalesAchievementController.cs" />
     <Compile Include="Areas\Reports\Models\BEl\AMWiseSalesAchievement.cs" />
     <Compile Include="Areas\Reports\Models\BEl\DepotCommCurrentStock.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="Areas\Reports\Models\BEl\ProdWiseSalesAchievement.cs" />
     <Compile Include="Areas\Reports\Models\BEl\RSMWiseSalesAchievement.cs" />
     <Compile Include="Areas\Reports\Models\BEl\StockProdSales.cs" />
+    <Compile Include="Areas\Reports\Models\BEl\TargetSales.cs" />
     <Compile Include="Areas\Reports\Models\BEl\ZoneWiseSalesAchievement.cs" />
     <Compile Include="Areas\Reports\Models\DAO\AMWiseSalesAchievementDAO.cs" />
     <Compile Include="Areas\Reports\Models\DAO\DepotCommCurrentStockDAO.cs" />
@@ -245,6 +247,7 @@
     <Compile Include="Areas\Reports\Models\DAO\ProdWiseSalesAchievementDAO.cs" />
     <Compile Include="Areas\Reports\Models\DAO\RSMWiseSalesValueAchievementDAO.cs" />
     <Compile Include="Areas\Reports\Models\DAO\StockProdSalesDAO.cs" />
+    <Compile Include="Areas\Reports\Models\DAO\TargetSalesDAO.cs" />
     <Compile Include="Areas\Reports\Models\DAO\ZoneWiseSalesAchievementDAO.cs" />
     <Compile Include="Areas\Reports\ReportsAreaRegistration.cs" />
     <Compile Include="Areas\Requisition\Controllers\ExpAllRequisitionController.cs" />
@@ -340,6 +343,7 @@
     <Content Include="Areas\Reports\NgCode\frmNationalCommCurrentStock.js" />
     <Content Include="Areas\Reports\NgCode\frmAMWiseSalesValueAchievement.js" />
     <Content Include="Areas\Reports\NgCode\frmStockProdSales.js" />
+    <Content Include="Areas\Reports\NgCode\frmTargetSales.js" />
     <Content Include="Areas\Reports\NgCode\frmZoneWiseSalesProductAchievement.js" />
     <Content Include="Areas\Reports\NgCode\frmRSMWiseSalesValueAchievement.js" />
     <Content Include="Areas\Reports\NgCode\frmZoneWiseSalesValueAchievement.js" />
@@ -449,6 +453,7 @@
     <Content Include="Areas\Reports\Views\MPOWiseSwtDrpsSalesAch\frmMPOWiseSwtDrpsSalesAch.cshtml" />
     <Content Include="Areas\Dashboard\Views\FactoryDashboard\frmFactoryDashboard.cshtml" />
     <Content Include="Areas\Reports\Views\StockProdSales\frmStockProdSales.cshtml" />
+    <Content Include="Areas\Reports\Views\TargetSales\frmTargetSales.cshtml" />
     <None Include="Content\AngularModules\_references.js" />
     <Content Include="Content\bootstrap-datepicker\.gitignore" />
     <Content Include="Content\bootstrap-datepicker\dist\css\bootstrap-datepicker.css" />
