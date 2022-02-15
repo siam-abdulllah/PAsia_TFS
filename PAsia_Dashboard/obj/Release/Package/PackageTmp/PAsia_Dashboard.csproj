@@ -180,6 +180,7 @@
     <Compile Include="Areas\FSM\Controllers\ReportNonSenderMPOController.cs" />
     <Compile Include="Areas\FSM\Controllers\ReportQualifiedMPOController.cs" />
     <Compile Include="Areas\FSM\Controllers\ReportRegionWiseDoctorIncentiveController.cs" />
+    <Compile Include="Areas\FSM\Controllers\StructureRefreshController.cs" />
     <Compile Include="Areas\FSM\FSMAreaRegistration.cs" />
     <Compile Include="Areas\FSM\Models\BEL\DashboardDoctorPrescriptionBEO.cs" />
     <Compile Include="Areas\FSM\Models\BEL\DashboardNationalPrescriptionBEO.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Areas\FSM\Models\DAL\ReportMPOWisePrescriptionSummaryDAO.cs" />
     <Compile Include="Areas\FSM\Models\DAL\ReportRegionWiseDoctorIncentiveDAO.cs" />
     <Compile Include="Areas\FSM\Models\DAL\ReportQualifiedMPODAO.cs" />
+    <Compile Include="Areas\FSM\Models\DAL\StructureRefreshDAO.cs" />
     <Compile Include="Areas\Reports\Controllers\AMWiseSalesAchievementController.cs" />
     <Compile Include="Areas\Reports\Controllers\DepotCommCurrentStockController.cs" />
     <Compile Include="Areas\Reports\Controllers\DepotPPMCurrentStockController.cs" />
@@ -335,6 +337,7 @@
     <Content Include="Areas\FSM\NgCode\frmReportMPOWisePrescription.js" />
     <Content Include="Areas\FSM\NgCode\frmHonorariumDoctorDataUpload.js" />
     <Content Include="Areas\FSM\NgCode\frmDoctorDataUpload.js" />
+    <Content Include="Areas\FSM\NgCode\frmStructurerefresh.js" />
     <Content Include="Areas\Reports\NgCode\frmDepotPPMCurrentStock.js" />
     <Content Include="Areas\Reports\NgCode\frmMPOWiseSwtDrpsSalesAch.js" />
     <Content Include="Areas\Reports\NgCode\frmMPOWiseSalesValueAchievement.js" />
@@ -454,6 +457,7 @@
     <Content Include="Areas\Dashboard\Views\FactoryDashboard\frmFactoryDashboard.cshtml" />
     <Content Include="Areas\Reports\Views\StockProdSales\frmStockProdSales.cshtml" />
     <Content Include="Areas\Reports\Views\TargetSales\frmTargetSales.cshtml" />
+    <Content Include="Areas\FSM\Views\StructureRefresh\frmStructureRefresh.cshtml" />
     <None Include="Content\AngularModules\_references.js" />
     <Content Include="Content\bootstrap-datepicker\.gitignore" />
     <Content Include="Content\bootstrap-datepicker\dist\css\bootstrap-datepicker.css" />

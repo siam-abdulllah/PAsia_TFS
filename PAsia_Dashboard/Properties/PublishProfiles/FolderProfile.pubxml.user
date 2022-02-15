@@ -112,6 +112,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/FSM/Controllers/ReportRegionWiseDoctorIncentiveController.cs">
       <publishTime>01/27/2022 10:45:52</publishTime>
     </File>
+    <File Include="Areas/FSM/Controllers/StructureRefreshController.cs">
+      <publishTime>02/15/2022 11:31:56</publishTime>
+    </File>
     <File Include="Areas/FSM/FSMAreaRegistration.cs">
       <publishTime>01/27/2022 10:45:52</publishTime>
     </File>
@@ -211,6 +214,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Areas/FSM/Models/DAL/ReportRegionWiseDoctorIncentiveDAO.cs">
       <publishTime>01/27/2022 10:45:52</publishTime>
     </File>
+    <File Include="Areas/FSM/Models/DAL/StructureRefreshDAO.cs">
+      <publishTime>02/15/2022 13:13:01</publishTime>
+    </File>
     <File Include="Areas/FSM/NgCode/frmDashboardDoctorPrescription.js">
       <publishTime>01/27/2022 10:45:52</publishTime>
     </File>
@@ -255,6 +261,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Areas/FSM/NgCode/frmReportRegionWiseDoctorIncentive.js">
       <publishTime>01/27/2022 10:45:52</publishTime>
+    </File>
+    <File Include="Areas/FSM/NgCode/frmStructurerefresh.js">
+      <publishTime>02/15/2022 11:31:35</publishTime>
     </File>
     <File Include="Areas/FSM/Views/DashboardDoctorPrescription/frmDashboardDoctorPrescription.cshtml">
       <publishTime>01/27/2022 10:45:52</publishTime>
@@ -306,6 +315,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Areas/FSM/Views/Shared/_Layout.cshtml">
       <publishTime>01/27/2022 10:45:52</publishTime>
+    </File>
+    <File Include="Areas/FSM/Views/StructureRefresh/frmStructureRefresh.cshtml">
+      <publishTime>02/15/2022 15:24:57</publishTime>
     </File>
     <File Include="Areas/FSM/Views/web.config">
       <publishTime>01/27/2022 10:45:52</publishTime>
@@ -902,13 +914,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2022 10:46:03</publishTime>
     </File>
     <File Include="bin/PAsia_Dashboard.dll">
-      <publishTime>02/14/2022 12:15:12</publishTime>
+      <publishTime>02/15/2022 15:26:03</publishTime>
     </File>
     <File Include="bin/PAsia_Dashboard.dll.config">
       <publishTime>01/27/2022 10:45:55</publishTime>
     </File>
     <File Include="bin/PAsia_Dashboard.pdb">
-      <publishTime>02/14/2022 12:15:12</publishTime>
+      <publishTime>02/15/2022 15:26:03</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>01/27/2022 10:46:03</publishTime>
@@ -8882,10 +8894,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2022 10:46:01</publishTime>
     </File>
     <File Include="PAsia_Dashboard.csproj">
-      <publishTime>02/13/2022 13:01:37</publishTime>
+      <publishTime>02/15/2022 12:16:12</publishTime>
     </File>
     <File Include="PAsia_Dashboard.csproj.user">
-      <publishTime>02/14/2022 12:15:07</publishTime>
+      <publishTime>02/15/2022 15:25:57</publishTime>
     </File>
     <File Include="Properties/AssemblyInfo.cs">
       <publishTime>01/27/2022 10:45:54</publishTime>
@@ -8894,7 +8906,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/27/2022 11:46:58</publishTime>
     </File>
     <File Include="Properties/PublishProfiles/FolderProfile.pubxml.user">
-      <publishTime>01/27/2022 11:47:23</publishTime>
+      <publishTime>02/14/2022 12:15:16</publishTime>
     </File>
     <File Include="Properties/PublishProfiles/PASIA.pubxml">
       <publishTime>01/27/2022 10:45:54</publishTime>
