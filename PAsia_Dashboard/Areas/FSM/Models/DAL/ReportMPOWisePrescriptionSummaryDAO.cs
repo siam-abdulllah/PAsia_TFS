@@ -128,6 +128,7 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_VCENT = row["TOTAL_VCENT"].ToString(),
                                     TOTAL_AIRUP = row["TOTAL_AIRUP"].ToString(),
                                     TOTAL_RINOBIL = row["TOTAL_RINOBIL"].ToString(),
+                                    TOTAL_XTRACALD = row["TOTAL_XTRACALD"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
@@ -198,6 +199,7 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_VCENT = row["TOTAL_VCENT"].ToString(),
                                     TOTAL_AIRUP = row["TOTAL_AIRUP"].ToString(),
                                     TOTAL_RINOBIL = row["TOTAL_RINOBIL"].ToString(),
+                                    TOTAL_XTRACALD = row["TOTAL_XTRACALD"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
@@ -266,6 +268,8 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_GAVICOOL = row["TOTAL_GAVICOOL"].ToString(),
                                     TOTAL_VCENT = row["TOTAL_VCENT"].ToString(),
                                     TOTAL_AIRUP = row["TOTAL_AIRUP"].ToString(),
+                                    TOTAL_RINOBIL = row["TOTAL_RINOBIL"].ToString(),
+                                    TOTAL_XTRACALD = row["TOTAL_XTRACALD"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
@@ -335,6 +339,7 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_VCENT = row["TOTAL_VCENT"].ToString(),
                                     TOTAL_AIRUP = row["TOTAL_AIRUP"].ToString(),
                                     TOTAL_RINOBIL = row["TOTAL_RINOBIL"].ToString(),
+                                    TOTAL_XTRACALD = row["TOTAL_XTRACALD"].ToString(),
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
