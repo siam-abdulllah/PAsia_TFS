@@ -43,5 +43,6 @@ namespace PAsia_Dashboard.Areas.FSM.Models.BEL.BEO
         public string TOTAL_VCENT { get; set; }
         public string TOTAL_RINOBIL { get;  set; }
         public String TOTAL_XTRACALD { get; set; }
+        public String TOTAL_TELMIFAST { get; set; }
     }
 }

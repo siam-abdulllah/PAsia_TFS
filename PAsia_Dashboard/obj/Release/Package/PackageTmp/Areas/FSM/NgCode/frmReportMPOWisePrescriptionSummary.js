@@ -201,6 +201,7 @@
         { name: "TOTAL_AIRUP", displayName: "Total Airup", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_RINOBIL", displayName: "Total Rinobil", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_XTRACALD", displayName: "Total XtracalD", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
+        { name: "TOTAL_TELMIFAST", displayName: "Total Telmifast", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' },
         { name: "TOTAL_OTHERS", displayName: "Total Others Product", width: 150, cellFilter: 'number', aggregationType: uiGridConstants.aggregationTypes.sum, cellClass: 'grid-align', footerCellFilter: 'number' }
     ];
 
