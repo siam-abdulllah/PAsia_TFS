@@ -17,5 +17,8 @@ namespace PAsia_Dashboard.Areas.Reports.Models.BEl
         public string VALUE_SALES { get; set; }
         public string CURRENT_STOCK { get; set; }
         public string BRAND_NAME { get; set; }
+        public String FROM_DATE { get; set; }
+        public String TO_DATE { get; set; }
+
     }
 }

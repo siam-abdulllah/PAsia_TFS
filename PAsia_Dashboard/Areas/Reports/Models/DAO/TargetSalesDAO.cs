@@ -59,6 +59,8 @@ namespace PAsia_Dashboard.Areas.Reports.Models.DAO
                                     UNIT_SALES = row["UNIT_SALES"].ToString(),
                                     VALUE_SALES = row["VALUE_SALES"].ToString(),
                                     CURRENT_STOCK = row["CURRENT_STOCK"].ToString(),
+                                    FROM_DATE = row["FROM_DATE"].ToString(),
+                                    TO_DATE = row["TO_DATE"].ToString(),
                                 }).ToList();
                         return item;
                     }

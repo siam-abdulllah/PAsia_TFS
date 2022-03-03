@@ -14,7 +14,10 @@
         { name: "VALUE_TARGET", displayName: "Value Target", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, width: 110, cellClass: 'grid-align', footerCellFilter: 'number:2' },
         { name: "UNIT_SALES", displayName: "Unit Sales", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, width: 110, cellClass: 'grid-align', footerCellFilter: 'number:2' },
         { name: "VALUE_SALES", displayName: "Value Sales", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, width: 120, cellClass: 'grid-align', footerCellFilter: 'number:2' },
-        { name: "CURRENT_STOCK", displayName: "Cuttent Stock", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, width: 120, cellClass: 'grid-align', footerCellFilter: 'number:2' }
+        { name: "CURRENT_STOCK", displayName: "Cuttent Stock", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, width: 120, cellClass: 'grid-align', footerCellFilter: 'number:2' },
+        { name: "FROM_DATE", displayName: "From Date", width: 100, },
+        { name: "TO_DATE", displayName: "To Date", width: 90, },
+
 
     ];
 
