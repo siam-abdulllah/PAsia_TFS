@@ -256,6 +256,7 @@
     <Compile Include="Areas\Requisition\Controllers\ExpIndividualRequisitionController.cs" />
     <Compile Include="Areas\Requisition\Controllers\ExpRequisitionApproveController.cs" />
     <Compile Include="Areas\Requisition\Controllers\ExpRequisitionCheckController.cs" />
+    <Compile Include="Areas\Requisition\Controllers\ExpRequisitionDivisionalController.cs" />
     <Compile Include="Areas\Requisition\Controllers\ExpRequisitionPrepareController.cs" />
     <Compile Include="Areas\Requisition\Controllers\ExpRequisitionRecommendController.cs" />
     <Compile Include="Areas\Requisition\Controllers\ExpRequisitionVerifyController.cs" />
@@ -266,6 +267,7 @@
     <Compile Include="Areas\Requisition\Models\BEL\RequisitionReportBEL.cs" />
     <Compile Include="Areas\Requisition\Models\DAL\ExpIndividualRequisitionDAL.cs" />
     <Compile Include="Areas\Requisition\Models\DAL\ExpAllRequisitionDAL.cs" />
+    <Compile Include="Areas\Requisition\Models\DAL\ExpRequisitionDivisionalDAL.cs" />
     <Compile Include="Areas\Requisition\Models\DAL\ExpRequisitionVerifyDAL.cs" />
     <Compile Include="Areas\Requisition\Models\DAL\ExpRequisitionApproveDAL.cs" />
     <Compile Include="Areas\Requisition\Models\DAL\ExpRequisitionRecommendDAL.cs" />
@@ -352,6 +354,7 @@
     <Content Include="Areas\Reports\NgCode\frmZoneWiseSalesValueAchievement.js" />
     <Content Include="Areas\Reports\Views\frmZoneWiseSalesValueAchievement.js" />
     <Content Include="Areas\Reports\Views\ZoneWiseSalesAchievement\frmZoneWiseSalesValueAchievement.cshtml" />
+    <Content Include="Areas\Requisition\NgCode\frmExpRequisitionDivisional.js" />
     <Content Include="Areas\Requisition\NgCode\frmExpIndividualRequisition.js" />
     <Content Include="Areas\Requisition\NgCode\frmExpAllRequisition.js" />
     <Content Include="Areas\Requisition\NgCode\frmExpRequisitionApprove.js" />
@@ -458,6 +461,7 @@
     <Content Include="Areas\Reports\Views\StockProdSales\frmStockProdSales.cshtml" />
     <Content Include="Areas\Reports\Views\TargetSales\frmTargetSales.cshtml" />
     <Content Include="Areas\FSM\Views\StructureRefresh\frmStructureRefresh.cshtml" />
+    <Content Include="Areas\Requisition\Views\ExpRequisitionDivisional\frmExpRequisitionDivisional.cshtml" />
     <None Include="Content\AngularModules\_references.js" />
     <Content Include="Content\bootstrap-datepicker\.gitignore" />
     <Content Include="Content\bootstrap-datepicker\dist\css\bootstrap-datepicker.css" />

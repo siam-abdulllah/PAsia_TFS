@@ -36,6 +36,13 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.BEL
             public string CheckedDate { get; set; }
             public string CheckedRemarks { get; set; }
 
+            public string DivisionalBy { get; set; }
+            public string DivisionalStatus { get; set; }
+            public string DivisionalName { get; set; }
+            public string DivisionalDesig { get; set; }
+            public string DivisionalDate { get; set; }
+            public string DivisionalRemarks { get; set; }
+
 
             public string VerifiedBy { get; set; }
             public string VerifiedStatus { get; set; }
@@ -72,6 +79,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.BEL
             public string Mop { get; set; }
             public int PrepareValue { get; set; }
             public int CheckedValue { get; set; }
+            public int DivisionalValue { get; set; }
             public int VerifiedValue { get; set; }
             public int RecommendedValue { get; set; }
             public int ApprovedValue { get; set; }
