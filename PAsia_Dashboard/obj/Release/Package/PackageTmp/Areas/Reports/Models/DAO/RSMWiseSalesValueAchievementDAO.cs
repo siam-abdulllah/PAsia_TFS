@@ -240,6 +240,7 @@ namespace PAsia_Dashboard.Areas.Reports.Models.DAO
             "                                                                   '004'," +
             "                                                                   '014'," +
             "                                                                   '015'," +
+            "                                                                   '129'," +
             "                                                                   '017'))" +
             "                  GROUP BY A.ZONE_CODE, A.REGION_CODE" +
            // " ,A.DSM_CODE,A.RSM_CODE" +
@@ -266,6 +267,7 @@ namespace PAsia_Dashboard.Areas.Reports.Models.DAO
             "                                                          '004'," +
             "                                                          '014'," +
             "                                                          '015'," +
+            "                                                          '129'," +
             "                                                          '017'))" +
             " GROUP BY ZONE_CODE,REGION_CODE" +
             //" ,DSM_CODE,RSM_CODE" +

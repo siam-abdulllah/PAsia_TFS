@@ -31,7 +31,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                     " NVL(APPROVED_STATUS,'Pending') APPROVED_STATUS,CHECKED_DATE,VERIFIED_DATE," +
                     " RECOMMENDED_DATE,APPROVED_DATE, NVL(PREPARED_BY_CONFIRM,'No') PREPARED_BY_CONFIRM FROM VW_EXP_REQUISITION " +
                     " A INNER JOIN SC_EMPLOYEE B ON A.PREPARED_BY=B.EMP_CODE " +
-                    " WHERE 1=1 AND B.DEPT_CODE='" + deptCode + "' AND PREPARED_BY IS NOT NULL AND PREPARED_BY_CONFIRM IS NOT NULL AND CHECKED_STATUS IS NOT NULL AND DIVISIONAL_STATUS IS NULL AND VERIFIED_STATUS IS NULL AND CHECKED_STATUS <> 'On Hold' " + param + " " +
+                    " WHERE 1=1 AND B.DEPT_CODE IN ('19','22','23','31','32') AND PREPARED_BY IS NOT NULL AND PREPARED_BY_CONFIRM IS NOT NULL AND PREPARED_BY_DEPARTMENT IN ('19','22','23','31','32') AND DIVISIONAL_STATUS IS NULL AND VERIFIED_STATUS IS NULL  " + param + " " +
                     " ORDER BY    REQUISITION_NO DESC";
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
@@ -84,7 +84,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                     " RECOMMENDED_DATE,APPROVED_DATE," +
                     " NVL( PREPARED_BY_CONFIRM,'No') PREPARED_BY_CONFIRM FROM VW_EXP_REQUISITION " +
                      " A INNER JOIN SC_EMPLOYEE B ON A.PREPARED_BY=B.EMP_CODE " +
-                    " WHERE 1=1  AND B.DEPT_CODE='" + deptCode + "' AND DIVISIONAL_STATUS IS NOT NULL  " + param + " " +
+                    " WHERE 1=1  AND B.DEPT_CODE IN ('19','22','23','31','32') AND PREPARED_BY_DEPARTMENT IN ('19','22','23','31','32') AND DIVISIONAL_STATUS IS NOT NULL  " + param + " " +
                     " ORDER BY    REQUISITION_NO DESC";
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
@@ -272,6 +272,13 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                                         "</tr>                                            " +
                                                         "<tr>" +
+                                                             "<td>Checked By</td>" +
+                                                              "<td>" + expReqPrepareMstInfo.CheckedName + "</td>" +
+                                                             "<td>" + expReqPrepareMstInfo.CheckedDesig + "</td>" +
+                                                             "<td>" + expReqPrepareMstInfo.CheckedDate + "</td>" +
+                                                         "</tr>" +
+
+                                                        "<tr>" +
                                                             "<td>Prepared By</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareName + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareDesig + "</td>" +
@@ -418,6 +425,14 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<td>" + empDesig + "</td>" +
                                                             "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                                         "</tr>                                            " +
+
+                                                        "<tr>" +
+                                                             "<td>Checked By</td>" +
+                                                              "<td>" + expReqPrepareMstInfo.CheckedName + "</td>" +
+                                                             "<td>" + expReqPrepareMstInfo.CheckedDesig + "</td>" +
+                                                             "<td>" + expReqPrepareMstInfo.CheckedDate + "</td>" +
+                                                         "</tr>" +
+
                                                         "<tr>" +
                                                             "<td>Prepared By</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareName + "</td>" +

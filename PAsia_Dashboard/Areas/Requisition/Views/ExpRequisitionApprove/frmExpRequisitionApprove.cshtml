@@ -169,6 +169,14 @@
                                                 <td>{{CheckedDesig}}</td>
                                                 <td>{{CheckedDate}}</td>
                                             </tr>
+
+                                            <tr ng-show="DivisionalDate">
+                                                <td>Checked By</td>
+                                                <td>{{DivisionalName}}</td>
+                                                <td>{{DivisionalDesig}}</td>
+                                                <td>{{DivisionalDate}}</td>
+                                            </tr>
+
                                             <tr ng-show="VerifiedDate">
                                                 <td>Verified By</td>
                                                 <td>{{VerifiedName}}</td>
@@ -197,9 +205,12 @@
                                     <button type="button" class="btn small btn-embossed btn-primary" ng-click="showPopUpExpReqApproveDtlOptions()" ng-disabled="frmExpRequisitionApprove.$invalid"><i class="fa fa-plus"></i>&nbsp; Add Item</button>
                                 </div>
                             </div>*@
-                        <div class="row">
+
+                        @*<div class="row">
                             <div id="gridPDtl" ui-grid="gridExpReqApproveDtlOptions" class="grid" style="height: 270px; width: 100%;" ui-grid-auto-resize ui-grid-resize-columns ui-grid-exporter></div>
-                        </div>
+                        </div>*@
+
+
                     </div>
                 </div>
             </div>
@@ -246,6 +257,19 @@
                                     <input type="text" class="form-control" id="VerifiedValue" name="VerifiedValue" ng-model="VerifiedValue" readonly>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+
+                                <div class="col-md-2">
+                                    <label class="control-label">Divisional Amount</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="DivisionalValue" name="DivisionalValue" ng-model="DivisionalValue" readonly>
+                                </div>
+
+                            </div>  
+
+
                             <div class="form-group">
                                 <div class="col-md-2">
                                     <label class="control-label">Checked Amount</label>
@@ -260,6 +284,9 @@
                                     <input type="text" class="form-control" id="PrepareValue" name="PrepareValue" ng-model="PrepareValue" readonly>
                                 </div>
                             </div>
+
+
+
                             <div class="form-group">
                                 <div class="col-md-2">
                                     <label class="control-label">From Date</label>

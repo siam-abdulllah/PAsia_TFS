@@ -1,5 +1,5 @@
 ﻿app.controller("myCtrl", function ($scope, $http, $interval, uiGridConstants) {
-    $scope.EventPerm(50);
+    $scope.EventPerm(52);
     $scope.ACCESS_LEVEL = '';
     //function GetUserName() {
 

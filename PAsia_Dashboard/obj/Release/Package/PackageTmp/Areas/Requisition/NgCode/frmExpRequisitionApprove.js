@@ -43,6 +43,11 @@
         $scope.SaveDb.CheckedName = $scope.CheckedName;
         $scope.SaveDb.CheckedDesig = $scope.CheckedDesig;
         $scope.SaveDb.CheckedDate = $scope.CheckedDate;
+
+        $scope.SaveDb.DivisionalName = $scope.DivisionalName;
+        $scope.SaveDb.DivisionalDesig = $scope.DivisionalDesig;
+        $scope.SaveDb.DivisionalDate = $scope.DivisionalDate;
+
         $scope.SaveDb.VerifiedName = $scope.VerifiedName;
         $scope.SaveDb.VerifiedDesig = $scope.VerifiedDesig;
         $scope.SaveDb.VerifiedDate = $scope.VerifiedDate;
@@ -159,6 +164,13 @@
         { name: 'CheckedRemarks', displayName: "CheckedRemarks", visible: false },
         { name: 'CheckedDate', displayName: "Checked Date" },
         { name: 'PreparedByConfirm', displayName: "Confirm" },
+
+
+        { name: 'DivisionalName', displayName: "Divisional Name" },
+        { name: 'DivisionalDesig', displayName: "Divisional Desig" },
+        { name: 'DivisionalDate', displayName: "Divisional Date" },
+        { name: 'DivisionalStatus', displayName: "Divisional Status" },
+
         { name: 'VerifiedName', displayName: "VerifiedName", visible: false },
         { name: 'VerifiedDesig', displayName: "VerifiedDesig", visible: false },
         { name: 'VerifiedDate', displayName: "Verified Date", visible: false },
@@ -212,6 +224,11 @@
         $scope.CheckedDesig = row.entity.CheckedDesig;
         $scope.CheckedDate = row.entity.CheckedDate;
         $scope.CheckedRemarks = row.entity.CheckedRemarks;
+
+        $scope.DivisionalName = row.entity.DivisionalName;
+        $scope.DivisionalDesig = row.entity.DivisionalDesig;
+        $scope.DivisionalDate = row.entity.DivisionalDate;
+
         $scope.VerifiedName = row.entity.VerifiedName;
         $scope.VerifiedDesig = row.entity.VerifiedDesig;
         $scope.VerifiedDate = row.entity.VerifiedDate;
@@ -246,6 +263,7 @@
         { name: 'Purpose', displayName: "Purpose" },
         { name: 'PrepareValue', displayName: "Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'CheckedValue', displayName: "Checked Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
+        { name: 'DivisionalValue', displayName: "Divisional Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'VerifiedValue', displayName: "Verified Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'RecommendedValue', displayName: "Recommended Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'ApprovedValue', displayName: "Approved Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
@@ -276,6 +294,7 @@
         $scope.Purpose = "";
         $scope.PrepareValue = "";
         $scope.CheckedValue = "";
+        $scope.DivisionalValue = "";
         $scope.VerifiedValue = "";
         $scope.RecommendedValue = "";
         $scope.ApprovedValue = "";
@@ -293,6 +312,7 @@
         $scope.Purpose = row.entity.Purpose;
         $scope.PrepareValue = row.entity.PrepareValue;
         $scope.CheckedValue = row.entity.CheckedValue;
+        $scope.DivisionalValue = row.entity.DivisionalValue;
         $scope.VerifiedValue = row.entity.VerifiedValue;
         $scope.RecommendedValue = row.entity.RecommendedValue;
         $scope.ApprovedValue = row.entity.ApprovedValue;
@@ -315,6 +335,7 @@
         $scope.Purpose = "";
         $scope.PrepareValue = "";
         $scope.CheckedValue = "";
+        $scope.DivisionalValue = "";
         $scope.VerifiedValue = "";
         $scope.RecommendedValue = "";
         $scope.ApprovedValue = "";
@@ -336,6 +357,7 @@
         $scope.PrepareDate = "";
         $scope.PrepareRemarks = "";
         $scope.CheckedDate = "";
+        $scope.DivisionalDate = "";
         $scope.CheckedRemarks = "";
         $scope.VerifiedDate = "";
         $scope.VerifiedRemarks = "";

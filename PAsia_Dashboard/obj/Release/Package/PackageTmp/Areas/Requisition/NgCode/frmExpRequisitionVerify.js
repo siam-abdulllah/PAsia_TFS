@@ -39,10 +39,17 @@
         $scope.SaveDb.PrepareDesig = $scope.PrepareDesig;
         $scope.SaveDb.PrepareDate = $scope.PrepareDate;
         $scope.SaveDb.PrepareRemarks = $scope.PrepareRemarks;
+
         $scope.SaveDb.CheckedName = $scope.CheckedName;
         $scope.SaveDb.CheckedDesig = $scope.CheckedDesig;
         $scope.SaveDb.CheckedDate = $scope.CheckedDate;
         $scope.SaveDb.CheckedDate = $scope.CheckedDate;
+
+        $scope.SaveDb.DivisionalName = $scope.DivisionalName;
+        $scope.SaveDb.DivisionalDesig = $scope.DivisionalDesig;
+        $scope.SaveDb.DivisionalDate = $scope.DivisionalDate;
+
+
         $scope.SaveDb.TotalApprovedAmt = $scope.gridExpReqVerifyDtlApi.grid.columns[5].getAggregationValue();
         $http({
             method: "POST",
@@ -153,10 +160,20 @@
         { name: 'PrepareDesig', displayName: "PrepareDesig", visible: false },
         { name: 'PrepareRemarks', displayName: "PrepareRemarks", visible: false },
         { name: 'PrepareDate', displayName: "Prepare Date" },
+
         { name: 'CheckedName', displayName: "CheckedName", visible: false },
         { name: 'CheckedDesig', displayName: "CheckedDesig", visible: false },
         { name: 'CheckedDate', displayName: "Checked Date" },
+
         { name: 'PreparedByConfirm', displayName: "Confirm" },
+
+
+        { name: 'DivisionalName', displayName: "Forword Name"},
+        { name: 'DivisionalDesig', displayName: "Forword Desig"},
+        { name: 'DivisionalDate', displayName: "Forword Date" },
+        { name: 'DivisionalStatus', displayName: "Forword Status" },
+
+
         { name: 'VerifiedStatus', displayName: "Verified Status" },
         { name: 'VerifiedDate', displayName: "Verified Date", visible: false },
         { name: 'VerifiedRemarks', displayName: "Verified Remarks", visible: false },
@@ -205,6 +222,11 @@
         $scope.CheckedName = row.entity.CheckedName;
         $scope.CheckedDesig = row.entity.CheckedDesig;
         $scope.CheckedDate = row.entity.CheckedDate;
+
+        $scope.DivisionalName = row.entity.DivisionalName;
+        $scope.DivisionalDesig = row.entity.DivisionalDesig;
+        $scope.DivisionalDate = row.entity.DivisionalDate;
+
         if (row.entity.VerifiedStatus !== "Pending") {
             $scope.VerifiedDate = row.entity.VerifiedDate;
             $scope.VerifiedStatus = row.entity.VerifiedStatus;
@@ -231,6 +253,7 @@
         { name: 'Purpose', displayName: "Purpose" },
         { name: 'PrepareValue', displayName: "Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'CheckedValue', displayName: "Checked Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
+        { name: 'DivisionalValue', displayName: "Forword Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'VerifiedValue', displayName: "Verified Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'FromDate', displayName: "From Date" },
         { name: 'ToDate', displayName: "To Date" },
@@ -260,6 +283,7 @@
         $scope.Purpose = "";
         $scope.PrepareValue = "";
         $scope.CheckedValue = "";
+        $scope.DivisionalValue = "";
         $scope.VerifiedValue = "";
         $scope.FromDate = "";
         $scope.ToDate = "";
@@ -275,6 +299,7 @@
         $scope.Purpose = row.entity.Purpose;
         $scope.PrepareValue = row.entity.PrepareValue;
         $scope.CheckedValue = row.entity.CheckedValue;
+        $scope.DivisionalValue = row.entity.DivisionalValue;
         $scope.VerifiedValue = row.entity.VerifiedValue;
         $scope.FromDate = row.entity.FromDate;
         $scope.ToDate = row.entity.ToDate;
@@ -289,12 +314,13 @@
         if (index !== null) {
             $scope.gridExpReqVerifyDtlOptions.data.splice(index, 1);
         }
-        $scope.gridExpReqVerifyDtlOptions.data.push({ DtlId: $scope.DtlId, Mop: $scope.Mop, Purpose: $scope.Purpose, PrepareValue: $scope.PrepareValue, CheckedValue: $scope.CheckedValue,VerifiedValue: $scope.VerifiedValue, FromDate: $scope.FromDate, ToDate: $scope.ToDate, RequiredDate: $scope.RequiredDate, TotalDays: $scope.TotalDays, Remarks: $scope.Remarks });
+        $scope.gridExpReqVerifyDtlOptions.data.push({ DtlId: $scope.DtlId, Mop: $scope.Mop, Purpose: $scope.Purpose, PrepareValue: $scope.PrepareValue, CheckedValue: $scope.CheckedValue, DivisionalValue: $scope.DivisionalValue,VerifiedValue: $scope.VerifiedValue, FromDate: $scope.FromDate, ToDate: $scope.ToDate, RequiredDate: $scope.RequiredDate, TotalDays: $scope.TotalDays, Remarks: $scope.Remarks });
         $scope.DtlId = "";
         $scope.Mop = "";
         $scope.Purpose = "";
         $scope.PrepareValue = "";
         $scope.CheckedValue = "";
+        $scope.DivisionalValue = "";
         $scope.VerifiedValue = "";
         $scope.FromDate = "";
         $scope.ToDate = "";

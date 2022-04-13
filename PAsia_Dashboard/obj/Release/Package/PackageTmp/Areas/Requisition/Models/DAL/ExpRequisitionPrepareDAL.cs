@@ -44,7 +44,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
         {
             try
             {
-                
+
                 string empCode = HttpContext.Current.Session["EMPLOYEE_CODE"].ToString();
                 string qry = "SELECT A.MST_ID, A.REQUISITION_NO, TO_CHAR(A.REQUISITION_DATE,'dd/MM/YYYY') REQUISITION_DATE,A.REQUISITION_TYPE, A.EXPENDITURE_MONTH, " +
                     " A.PAY_TO,B.EMPLOYEE_NAME,C.DESIG_NAME,A.PAYMENT_PLACE, " +
@@ -443,6 +443,9 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                     string empCode = HttpContext.Current.Session["EMPLOYEE_CODE"].ToString();
                     string empName = HttpContext.Current.Session["EMPLOYEE_NAME"].ToString();
                     string empDesig = HttpContext.Current.Session["DESIGNATION"].ToString();
+
+                    string deptCode = HttpContext.Current.Session["DEPARTMENT_CODE"].ToString();
+
                     cmd.Connection = con;
                     con.Open();
                     OracleTransaction trans = con.BeginTransaction();
@@ -464,8 +467,22 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                         int noOfRowsMst = cmd.ExecuteNonQuery();
                         if (noOfRowsMst > 0)
                         {
+
                             trans.Commit();
-                            string tag = string.Format(@"<a href='http://" + HttpContext.Current.Request.Url.Authority + ("/Requisition/ExpRequisitionCheck/frmExpRequisitionCheck") + "'>Requisition Check</a>");
+
+                            string tag = " ";
+                            if (deptCode == "19" || deptCode == "23" || deptCode == "31" || deptCode == "32")
+                            {
+                                tag = string.Format(@"<a href='http://" + HttpContext.Current.Request.Url.Authority + ("/Requisition/ExpRequisitionDivisional/frmExpRequisitionDivisional") + "'>Requisition Check</a>");
+                            }
+                            else
+
+                            {
+                                tag = string.Format(@"<a href='http://" + HttpContext.Current.Request.Url.Authority + ("/Requisition/ExpRequisitionCheck/frmExpRequisitionCheck") + "'>Requisition Check</a>");
+
+                            }
+
+
                             var mailBody = "A Requisition <b><u>(" + expReqPrepareMstInfo.RequisitionNo + ")</u></b> has been generated.</br></br>" +
                                 "<table border='1' style='border: 1px solid black;'>" +
                                                     "<tbody>" +
@@ -482,11 +499,11 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<td>" + expReqPrepareMstInfo.PrepareDate + "</td>" +
                                                         "</tr>" +
                                                     "</tbody>" +
-                                               "</table>"
-                                               + "</br>Requisition Detail: " + expReqPrepareMstInfo.PrepareRemarks
-                                               + "</br>"
-                                               + "</br>Total Amount: " + expReqPrepareMstInfo.TotalApprovedAmt
-                                               + "</br>Click Here: " + tag;
+                                                "</table>"
+                                                + "</br>Requisition Detail: " + expReqPrepareMstInfo.PrepareRemarks
+                                                + "</br>"
+                                                + "</br>Total Amount: " + expReqPrepareMstInfo.TotalApprovedAmt
+                                                + "</br>Click Here: " + tag;
                             //"</br>Preapared By: [" + empCode + "] " + empName
                             //  //+ Environment.NewLine + Environment.NewLine +
                             //  +"</br>Designation: " + empDesig
@@ -502,9 +519,16 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                             var mailSub = "Requisition For Checking";
                             _auditTrailDAO.InsertAudit("frmExpRequisitionPrepare", "EXP_REQUISITION_MST", IUMode, expReqPrepareMstInfo.MstId.ToString(), mailBody, mailSub);
                             return true;
+
+
+
                         }
+
+
                         else { trans.Rollback(); }
                     }
+
+
                     catch (Exception e)
                     {
                         throw;
@@ -513,6 +537,13 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
             }
             return false;
         }
+
+
+
+
+
+
+
 
 
 

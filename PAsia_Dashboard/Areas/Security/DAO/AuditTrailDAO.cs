@@ -60,12 +60,16 @@ namespace PAsia_Dashboard.Areas.Security.DAO
                 {
                     query = "SELECT B.EMAIL FROM SA_ML_CONF A INNER JOIN EMPLOYEE_INFO B ON A.EMP_CODE=B.EMPLOYEE_CODE WHERE A.SM_URL='" + formName + "'";
                     if (formName == "frmExpRequisitionPrepare")
-                    {
-                        query = "SELECT DISTINCT B.EMAIL FROM SA_ML_CONF A " +
-                                  " INNER JOIN EMPLOYEE_INFO B ON A.EMP_CODE=B.EMPLOYEE_CODE INNER JOIN SC_EMPLOYEE C ON B.EMPLOYEE_CODE = C.EMP_CODE  WHERE A.SM_URL='" + formName + "' AND " +
-                                  " C.DEPT_CODE='" + deptCode + "'";
+
+                    {                  
+                            query = "SELECT DISTINCT B.EMAIL FROM SA_ML_CONF A " +
+                                    " INNER JOIN EMPLOYEE_INFO B ON A.EMP_CODE=B.EMPLOYEE_CODE INNER JOIN SC_EMPLOYEE C ON B.EMPLOYEE_CODE = C.EMP_CODE  WHERE A.SM_URL='" + formName + "' AND " +
+                                    " A.DEPT_CODE like '%" + deptCode + "%'";                       
+
                     }
                 }
+
+
                 DataTable dt = dbHelper.GetDataTable(dbConn.SAConnStrReader("Dashboard"), query);
                 foreach (DataRow row in dt.Rows)
                 {

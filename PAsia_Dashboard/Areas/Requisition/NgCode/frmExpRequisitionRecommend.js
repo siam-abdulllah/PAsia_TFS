@@ -42,6 +42,11 @@
         $scope.SaveDb.CheckedName = $scope.CheckedName;
         $scope.SaveDb.CheckedDesig = $scope.CheckedDesig;
         $scope.SaveDb.CheckedDate = $scope.CheckedDate;
+
+        $scope.SaveDb.DivisionalName = $scope.DivisionalName;
+        $scope.SaveDb.DivisionalDesig = $scope.DivisionalDesig;
+        $scope.SaveDb.DivisionalDate = $scope.DivisionalDate;
+
         $scope.SaveDb.VerifiedName = $scope.VerifiedName;
         $scope.SaveDb.VerifiedDesig = $scope.VerifiedDesig;
         $scope.SaveDb.VerifiedDate = $scope.VerifiedDate;
@@ -159,6 +164,14 @@
         { name: 'CheckedRemarks', displayName: "CheckedRemarks", visible: false },
         { name: 'CheckedDate', displayName: "Checked Date" },
         { name: 'PreparedByConfirm', displayName: "Confirm" },
+
+
+        { name: 'DivisionalName', displayName: "Divisional Name" },
+        { name: 'DivisionalDesig', displayName: "Divisional Desig" },
+        { name: 'DivisionalDate', displayName: "Divisional Date" },
+        { name: 'DivisionalStatus', displayName: "Divisional Status" },
+
+
         { name: 'VerifiedName', displayName: "VerifiedName", visible: false },
         { name: 'VerifiedDesig', displayName: "VerifiedDesig", visible: false },
         { name: 'VerifiedDate', displayName: "Verified Date", visible: false },
@@ -211,6 +224,11 @@
         $scope.CheckedDesig = row.entity.CheckedDesig;
         $scope.CheckedDate = row.entity.CheckedDate;
         $scope.CheckedRemarks = row.entity.CheckedRemarks;
+
+        $scope.DivisionalName = row.entity.DivisionalName;
+        $scope.DivisionalDesig = row.entity.DivisionalDesig;
+        $scope.DivisionalDate = row.entity.DivisionalDate;
+
         $scope.VerifiedName = row.entity.VerifiedName;
         $scope.VerifiedDesig = row.entity.VerifiedDesig;
         $scope.VerifiedDate = row.entity.VerifiedDate;
@@ -241,6 +259,7 @@
         { name: 'Purpose', displayName: "Purpose" },
         { name: 'PrepareValue', displayName: "Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'CheckedValue', displayName: "Checked Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
+        { name: 'DivisionalValue', displayName: "Divisional Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'VerifiedValue', displayName: "Verified Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'RecommendedValue', displayName: "Recommended Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'FromDate', displayName: "From Date" },
@@ -270,6 +289,7 @@
         $scope.Purpose = "";
         $scope.PrepareValue = "";
         $scope.CheckedValue = "";
+        $scope.DivisionalValue = "";
         $scope.VerifiedValue = "";
         $scope.RecommendedValue = "";
         $scope.FromDate = "";
@@ -286,6 +306,7 @@
         $scope.Purpose = row.entity.Purpose;
         $scope.PrepareValue = row.entity.PrepareValue;
         $scope.CheckedValue = row.entity.CheckedValue;
+        $scope.DivisionalValue = row.entity.DivisionalValue;
         $scope.VerifiedValue = row.entity.VerifiedValue;
         $scope.RecommendedValue = row.entity.RecommendedValue;
         $scope.FromDate = row.entity.FromDate;
@@ -301,12 +322,13 @@
         if (index !== null) {
             $scope.gridExpReqRecommendDtlOptions.data.splice(index, 1);
         }
-        $scope.gridExpReqRecommendDtlOptions.data.push({ DtlId: $scope.DtlId, Mop: $scope.Mop, Purpose: $scope.Purpose, PrepareValue: $scope.PrepareValue, CheckedValue: $scope.CheckedValue, VerifiedValue: $scope.VerifiedValue, RecommendedValue: $scope.RecommendedValue, FromDate: $scope.FromDate, ToDate: $scope.ToDate, RequiredDate: $scope.RequiredDate, TotalDays: $scope.TotalDays, Remarks: $scope.Remarks });
+        $scope.gridExpReqRecommendDtlOptions.data.push({ DtlId: $scope.DtlId, Mop: $scope.Mop, Purpose: $scope.Purpose, PrepareValue: $scope.PrepareValue, CheckedValue: $scope.CheckedValue, DivisionalValue: $scope.DivisionalValue,VerifiedValue: $scope.VerifiedValue, RecommendedValue: $scope.RecommendedValue, FromDate: $scope.FromDate, ToDate: $scope.ToDate, RequiredDate: $scope.RequiredDate, TotalDays: $scope.TotalDays, Remarks: $scope.Remarks });
         $scope.DtlId = "";
         $scope.Mop = "";
         $scope.Purpose = "";
         $scope.PrepareValue = "";
         $scope.CheckedValue = "";
+        $scope.DivisionalValue = "";
         $scope.VerifiedValue = "";
         $scope.RecommendedValue = "";
         $scope.FromDate = "";
@@ -325,6 +347,7 @@
         $scope.RequisitionNo = "";
         $scope.PrepareDate = "";
         $scope.CheckedDate = "";
+        $scope.DivisionalDate = "";
         $scope.VerifiedDate = "";
         $scope.ReqType = "";
         $scope.RecommendedDate = toDay;

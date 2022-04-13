@@ -30,7 +30,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                     " NVL(APPROVED_STATUS,'Pending') APPROVED_STATUS,CHECKED_DATE,VERIFIED_DATE," +
                     " RECOMMENDED_DATE,APPROVED_DATE, NVL(PREPARED_BY_CONFIRM,'No') PREPARED_BY_CONFIRM FROM VW_EXP_REQUISITION " +
                     " A INNER JOIN SC_EMPLOYEE B ON A.PREPARED_BY=B.EMP_CODE " +
-                    " WHERE 1=1 AND B.DEPT_CODE='" + deptCode + "' AND PREPARED_BY IS NOT NULL AND PREPARED_BY_CONFIRM IS NOT NULL AND CHECKED_STATUS IS NULL  " + param + " " +
+                    " WHERE 1=1 AND B.DEPT_CODE='" + deptCode + "' AND PREPARED_BY IS NOT NULL AND A.PREPARED_BY_DEPARTMENT NOT IN ('19','23','31','32') AND PREPARED_BY_CONFIRM IS NOT NULL AND CHECKED_STATUS IS NULL  " + param + " " +
                     " ORDER BY    REQUISITION_NO DESC";
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
@@ -80,7 +80,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                     " RECOMMENDED_DATE,APPROVED_DATE," +
                     " NVL( PREPARED_BY_CONFIRM,'No') PREPARED_BY_CONFIRM FROM VW_EXP_REQUISITION " +
                      " A INNER JOIN SC_EMPLOYEE B ON A.PREPARED_BY=B.EMP_CODE " +
-                    " WHERE 1=1  AND B.DEPT_CODE='" + deptCode + "' AND CHECKED_STATUS IS NOT NULL  " + param + " " +
+                    " WHERE 1=1  AND B.DEPT_CODE='" + deptCode + "' AND PREPARED_BY_DEPARTMENT NOT IN ('19','23','31','32') AND CHECKED_STATUS IS NOT NULL  " + param + " " +
                     " ORDER BY    REQUISITION_NO DESC";
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows

@@ -164,6 +164,14 @@
                                                 <td>{{CheckedDesig}}</td>
                                                 <td>{{CheckedDate}}</td>
                                             </tr>
+
+                                            <tr ng-show="DivisionalDate">
+                                                <td>Divisional By</td>
+                                                <td>{{DivisionalName}}</td>
+                                                <td>{{DivisionalDesig}}</td>
+                                                <td>{{DivisionalDate}}</td>
+                                            </tr>
+
                                             <tr>
                                                 <td>Verify By</td>
                                                 <td>[@Session["EMPLOYEE_CODE"].ToString()] @Session["EMPLOYEE_NAME"].ToString()</td>
@@ -235,6 +243,14 @@
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" id="PrepareValue" name="PrepareValue" ng-model="PrepareValue" readonly>
                                 </div>
+                                <div class="col-md-2">
+                                    <label class="control-label">Divisional Amount</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="DivisionalValue" name="DivisionalValue" ng-model="DivisionalValue" readonly>
+                                </div>
+
+
                             </div>  
                             <div class="form-group">
                                 <div class="col-md-2">

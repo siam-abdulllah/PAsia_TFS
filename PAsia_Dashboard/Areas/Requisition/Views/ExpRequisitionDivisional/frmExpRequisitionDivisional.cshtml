@@ -106,7 +106,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-2">
-                                    <label class="control-label required">Divisional Status</label>
+                                    <label class="control-label required">Forword Status</label>
                                 </div>
                                 <div class="col-md-3">
                                     <select class="form-control" id="DivisionalStatus" name="DivisionalStatus" ng-model="DivisionalStatus" ng-init="DivisionalStatus=''" required>
@@ -170,7 +170,7 @@
 
 
                                             <tr>
-                                                <td>Divisional By</td>
+                                                <td>Forword By</td>
                                                 <td>[@Session["EMPLOYEE_CODE"].ToString()] @Session["EMPLOYEE_NAME"].ToString()</td>
                                                 <td>@Session["DESIGNATION"].ToString()</td>
                                                 <td>{{DivisionalDate}}</td>
@@ -219,6 +219,17 @@
                                     <textarea type="text" class="form-control" rows="1" id="Purpose" name="Purpose" ng-model="Purpose" readonly></textarea>
                                 </div>
                             </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label class="control-label required">Checked Amount</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" id="CheckedValue" name="CheckedValue" ng-pattern="{{NumberPattern}}" ng-model="CheckedValue" required>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <div class="col-md-2">
                                     <label class="control-label required">Divisional Amount</label>

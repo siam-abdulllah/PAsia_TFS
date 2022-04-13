@@ -154,9 +154,9 @@
         { name: 'CheckedRemarks', displayName: "Checked Remarks", visible: false },
         { name: 'CheckedDate', displayName: "Checked Date", visible: false },
 
-        { name: 'DivisionalStatus', displayName: "Divisional Status" },
-        { name: 'DivisionalRemarks', displayName: "Divisional Remarks", visible: false },
-        { name: 'DivisionalDate', displayName: "Divisional Date", visible: false },
+        { name: 'DivisionalStatus', displayName: "Forword Status" },
+        { name: 'DivisionalRemarks', displayName: "Forword Remarks", visible: false },
+        { name: 'DivisionalDate', displayName: "Forword Date", visible: false },
 
         { name: 'VerifiedStatus', displayName: "Verified Status" },
         { name: 'VerifiedDate', displayName: "Verified Date", visible: false },
@@ -240,7 +240,7 @@
         { name: 'Purpose', displayName: "Purpose" },
         { name: 'PrepareValue', displayName: "Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'CheckedValue', displayName: "Checked Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
-        { name: 'DivisionalValue', displayName: "Divisional Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
+        { name: 'DivisionalValue', displayName: "Forword Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'FromDate', displayName: "From Date" },
         { name: 'ToDate', displayName: "To Date" },
         { name: 'RequiredDate', displayName: "Required Date" },

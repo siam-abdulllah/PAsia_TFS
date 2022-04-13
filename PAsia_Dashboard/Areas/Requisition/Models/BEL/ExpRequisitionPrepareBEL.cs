@@ -65,6 +65,11 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.BEL
             public string ApprovedDesig { get; set; }
             public string ApprovedDate { get; set; }
             public string ApprovedRemarks { get; set; }
+
+
+
+
+
             public string PrintFlag { get; set; }
             public int TotalApprovedAmt { get; set; }
             public string PreparedByConfirm { get;  set; }
@@ -82,7 +87,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.BEL
             public int DivisionalValue { get; set; }
             public int VerifiedValue { get; set; }
             public int RecommendedValue { get; set; }
-            public int ApprovedValue { get; set; }
+            public int ApprovedValue { get; set; }   
             public string RequiredDate { get; set; }
             public string Purpose { get; set; }
             public string FromDate { get; set; }

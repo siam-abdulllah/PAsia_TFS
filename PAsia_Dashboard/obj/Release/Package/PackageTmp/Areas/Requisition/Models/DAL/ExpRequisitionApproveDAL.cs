@@ -23,16 +23,100 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
             try
             {
                 string empCode = HttpContext.Current.Session["EMPLOYEE_CODE"].ToString();
-                string qry = "SELECT DISTINCT MST_ID, REQUISITION_NO,  REQUISITION_TYPE,  EXPENDITURE_MONTH, " +
-                    " PAY_TO_NAME, PAY_TO_DESIG, PAYMENT_PLACE,PREPARED_BY,PREPARED_BY_NAME,PREPARED_BY_DESIG,PREPARED_DATE,PREPARED_REMARKS,CHECKED_BY_NAME,CHECKED_BY_DESIG,CHECKED_REMARKS," +
-                    " VERIFIED_BY_NAME,VERIFIED_BY_DESIG,VERIFIED_REMARKS,RECOMMENDED_BY_NAME,RECOMMENDED_BY_DESIG,RECOMMENDED_REMARKS," +
-                    " NVL(CHECKED_STATUS,'Pending') CHECKED_STATUS,NVL(VERIFIED_STATUS,'Pending') VERIFIED_STATUS,NVL( RECOMMENDED_STATUS,'Pending') RECOMMENDED_STATUS," +
-                    " NVL(APPROVED_STATUS,'Pending') APPROVED_STATUS,CHECKED_DATE,VERIFIED_DATE," +
-                    " RECOMMENDED_DATE,APPROVED_DATE, NVL(PREPARED_BY_CONFIRM,'No') PREPARED_BY_CONFIRM FROM VW_EXP_REQUISITION" +
-                    " WHERE 1=1 AND PREPARED_BY IS NOT NULL AND PREPARED_BY_CONFIRM IS NOT NULL AND CHECKED_STATUS='Approved' " +
-                    " AND VERIFIED_STATUS='Approved' AND RECOMMENDED_STATUS='Approved' AND  APPROVED_STATUS IS NULL " + param + " " +
-                    //" ORDER BY  REQUISITION_NO,TO_DATE(RECOMMENDED_DATE,'dd/MM/YYYY') DESC";
-                    " ORDER BY  REQUISITION_NO DESC";
+                string qry = "  SELECT DISTINCT MST_ID," +
+                                "                  REQUISITION_NO," +
+                                "                  REQUISITION_TYPE," +
+                                "                  EXPENDITURE_MONTH," +
+                                "                  PAY_TO_NAME," +
+                                "                  PAY_TO_DESIG," +
+                                "                  PAYMENT_PLACE," +
+                                "                  PREPARED_BY," +
+                                "                  PREPARED_BY_NAME," +
+                                "                  PREPARED_BY_DESIG," +
+                                "                  PREPARED_DATE," +
+                                "                  PREPARED_REMARKS," +
+                                "                  CHECKED_BY_NAME," +
+                                "                  CHECKED_BY_DESIG," +
+                                "                  CHECKED_REMARKS," +
+                                "                  DIVISIONAL_BY_NAME," +
+                                "                  DIVISIONAL_BY_DESIG," +
+                                "                  DIVISIONAL_DATE," +
+                                "                  DIVISIONAL_REMARKS," +
+                                "                  NVL (DIVISIONAL_STATUS, 'Pending') DIVISIONAL_STATUS," +
+                                "                  VERIFIED_BY_NAME," +
+                                "                  VERIFIED_BY_DESIG," +
+                                "                  VERIFIED_REMARKS," +
+                                "                  RECOMMENDED_BY_NAME," +
+                                "                  RECOMMENDED_BY_DESIG," +
+                                "                  RECOMMENDED_REMARKS," +
+                                "                  NVL (CHECKED_STATUS, 'Pending') CHECKED_STATUS," +
+                                "                  NVL (VERIFIED_STATUS, 'Pending') VERIFIED_STATUS," +
+                                "                  NVL (RECOMMENDED_STATUS, 'Pending') RECOMMENDED_STATUS," +
+                                "                  NVL (APPROVED_STATUS, 'Pending') APPROVED_STATUS," +
+                                "                  CHECKED_DATE," +
+                                "                  VERIFIED_DATE," +
+                                "                  RECOMMENDED_DATE," +
+                                "                  APPROVED_DATE," +
+                                "                  NVL (PREPARED_BY_CONFIRM, 'No') PREPARED_BY_CONFIRM" +
+                                "    FROM VW_EXP_REQUISITION" +
+                                "   WHERE     1 = 1" +
+                                "         AND PREPARED_BY IS NOT NULL" +
+                                "         AND PREPARED_BY_CONFIRM IS NOT NULL" +
+                                "         AND PREPARED_BY_DEPARTMENT NOT IN ('19','23','31','32','22')" +
+                                "         AND CHECKED_STATUS = 'Approved'" +
+                                "         AND VERIFIED_STATUS = 'Approved'" +
+                                "         AND RECOMMENDED_STATUS = 'Approved'" +
+                                "         AND APPROVED_STATUS IS NULL" +
+                                "         " +
+                                "UNION ALL " +
+                                "SELECT DISTINCT MST_ID," +
+                                "                  REQUISITION_NO," +
+                                "                  REQUISITION_TYPE," +
+                                "                  EXPENDITURE_MONTH," +
+                                "                  PAY_TO_NAME," +
+                                "                  PAY_TO_DESIG," +
+                                "                  PAYMENT_PLACE," +
+                                "                  PREPARED_BY," +
+                                "                  PREPARED_BY_NAME," +
+                                "                  PREPARED_BY_DESIG," +
+                                "                  PREPARED_DATE," +
+                                "                  PREPARED_REMARKS," +
+                                "                  CHECKED_BY_NAME," +
+                                "                  CHECKED_BY_DESIG," +
+                                "                  CHECKED_REMARKS," +
+                                "                  DIVISIONAL_BY_NAME," +
+                                "                  DIVISIONAL_BY_DESIG," +
+                                "                  DIVISIONAL_DATE," +
+                                "                  DIVISIONAL_REMARKS," +
+                                "                  NVL (DIVISIONAL_STATUS, 'Pending') DIVISIONAL_STATUS," +
+                                "                  VERIFIED_BY_NAME," +
+                                "                  VERIFIED_BY_DESIG," +
+                                "                  VERIFIED_REMARKS," +
+                                "                  RECOMMENDED_BY_NAME," +
+                                "                  RECOMMENDED_BY_DESIG," +
+                                "                  RECOMMENDED_REMARKS," +
+                                "                  NVL (CHECKED_STATUS, 'Pending') CHECKED_STATUS," +
+                                "                  NVL (VERIFIED_STATUS, 'Pending') VERIFIED_STATUS," +
+                                "                  NVL (RECOMMENDED_STATUS, 'Pending') RECOMMENDED_STATUS," +
+                                "                  NVL (APPROVED_STATUS, 'Pending') APPROVED_STATUS," +
+                                "                  CHECKED_DATE," +
+                                "                  VERIFIED_DATE," +
+                                "                  RECOMMENDED_DATE," +
+                                "                  APPROVED_DATE," +
+                                "                  NVL (PREPARED_BY_CONFIRM, 'No') PREPARED_BY_CONFIRM" +
+                                "    FROM VW_EXP_REQUISITION" +
+                                "   WHERE     1 = 1" +
+                                "         AND PREPARED_BY IS NOT NULL" +
+                                "         AND PREPARED_BY_CONFIRM IS NOT NULL" +
+                                "         AND PREPARED_BY_DEPARTMENT IN ('19','23','31','32','22')" +
+                                "         AND DIVISIONAL_STATUS = 'Approved'" +
+                                "         AND VERIFIED_STATUS = 'Approved'" +
+                                "         AND RECOMMENDED_STATUS = 'Approved'" +
+                                "         AND APPROVED_STATUS IS NULL         " +
+                                "         " +
+                                "         " +
+                                "ORDER BY REQUISITION_NO DESC";
+
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
                             select new ExpReqPrepareMst
@@ -55,6 +139,13 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                 CheckedDate = row["CHECKED_DATE"].ToString(),
                                 CheckedStatus = row["CHECKED_STATUS"].ToString(),
                                 CheckedRemarks = row["CHECKED_REMARKS"].ToString(),
+
+                                DivisionalName = row["DIVISIONAL_BY_NAME"].ToString(),
+                                DivisionalDesig = row["DIVISIONAL_BY_DESIG"].ToString(),
+                                DivisionalDate = row["DIVISIONAL_DATE"].ToString(),
+                                DivisionalStatus = row["DIVISIONAL_STATUS"].ToString(),
+                                DivisionalRemarks = row["DIVISIONAL_REMARKS"].ToString(),
+
                                 VerifiedName = row["VERIFIED_BY_NAME"].ToString(),
                                 VerifiedDesig = row["VERIFIED_BY_DESIG"].ToString(),
                                 VerifiedDate = row["VERIFIED_DATE"].ToString(),
@@ -85,7 +176,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                 string qry = "SELECT  DISTINCT MST_ID,  REQUISITION_NO,  REQUISITION_TYPE,  EXPENDITURE_MONTH, " +
                     " PAY_TO_NAME, PAY_TO_DESIG, PAYMENT_PLACE,PREPARED_BY,PREPARED_BY_NAME,PREPARED_BY_DESIG,PREPARED_DATE,PREPARED_REMARKS,CHECKED_BY_NAME,CHECKED_BY_DESIG,CHECKED_REMARKS," +
                     " VERIFIED_BY_NAME,VERIFIED_BY_DESIG,VERIFIED_REMARKS,RECOMMENDED_BY_NAME,RECOMMENDED_BY_DESIG,RECOMMENDED_REMARKS," +
-                    " NVL( CHECKED_STATUS,'Pending') CHECKED_STATUS,NVL( VERIFIED_STATUS,'Pending') VERIFIED_STATUS,NVL( RECOMMENDED_STATUS,'Pending') RECOMMENDED_STATUS,RECOMMENDED_REMARKS," +
+                    " NVL( CHECKED_STATUS,'Pending') CHECKED_STATUS,DIVISIONAL_BY_NAME,DIVISIONAL_BY_DESIG,DIVISIONAL_DATE,DIVISIONAL_REMARKS,NVL(DIVISIONAL_STATUS,'Pending')DIVISIONAL_STATUS,NVL( VERIFIED_STATUS,'Pending') VERIFIED_STATUS,NVL( RECOMMENDED_STATUS,'Pending') RECOMMENDED_STATUS,RECOMMENDED_REMARKS," +
                     " NVL( APPROVED_STATUS,'Pending') APPROVED_STATUS, CHECKED_DATE, VERIFIED_DATE," +
                     " RECOMMENDED_DATE,APPROVED_DATE,APPROVED_REMARKS," +
                     " NVL( PREPARED_BY_CONFIRM,'No') PREPARED_BY_CONFIRM FROM VW_EXP_REQUISITION WHERE 1=1 AND APPROVED_STATUS IS NOT NULL  " + param + " " +
@@ -112,6 +203,13 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                 CheckedDate = row["CHECKED_DATE"].ToString(),
                                 CheckedStatus = row["CHECKED_STATUS"].ToString(),
                                 CheckedRemarks = row["CHECKED_REMARKS"].ToString(),
+
+                                DivisionalName = row["DIVISIONAL_BY_NAME"].ToString(),
+                                DivisionalDesig = row["DIVISIONAL_BY_DESIG"].ToString(),
+                                DivisionalDate = row["DIVISIONAL_DATE"].ToString(),
+                                DivisionalStatus = row["DIVISIONAL_STATUS"].ToString(),
+                                DivisionalRemarks = row["DIVISIONAL_REMARKS"].ToString(),
+
                                 VerifiedName = row["VERIFIED_BY_NAME"].ToString(),
                                 VerifiedDesig = row["VERIFIED_BY_DESIG"].ToString(),
                                 VerifiedDate = row["VERIFIED_DATE"].ToString(),
@@ -138,7 +236,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
         {
             try
             {
-                string qry = "SELECT DTL_ID, MST_ID, MOP,PREPARED_VALUE,CHECKED_VALUE,VERIFIED_VALUE,RECOMMENDED_VALUE,NVL(APPROVED_VALUE,0) APPROVED_VALUE,PURPOSE, " +
+                string qry = "SELECT DTL_ID, MST_ID, MOP,PREPARED_VALUE,CHECKED_VALUE,NVL(DIVISIONAL_VALUE,0)DIVISIONAL_VALUE,VERIFIED_VALUE,RECOMMENDED_VALUE,NVL(APPROVED_VALUE,0) APPROVED_VALUE,PURPOSE, " +
                     " TO_CHAR(FROM_DATE,'dd/MM/YYYY') FROM_DATE, TO_CHAR(TO_DATE,'dd/MM/YYYY') TO_DATE,TO_CHAR(REQUIRED_DATE,'dd/MM/YYYY') REQUIRED_DATE,REMARKS, TOTAL_DAYS FROM EXP_REQUISITION_DTL WHERE MST_ID=" + mstId;
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
@@ -149,6 +247,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                 Mop = row["MOP"].ToString(),
                                 PrepareValue = Convert.ToInt32(row["PREPARED_VALUE"]),
                                 CheckedValue = Convert.ToInt32(row["CHECKED_VALUE"]),
+                                DivisionalValue = Convert.ToInt32(row["DIVISIONAL_VALUE"]),
                                 VerifiedValue = Convert.ToInt32(row["VERIFIED_VALUE"]),
                                 RecommendedValue = Convert.ToInt32(row["RECOMMENDED_VALUE"]),
                                 ApprovedValue = Convert.ToInt32(row["APPROVED_VALUE"]) == 0 ? Convert.ToInt32(row["RECOMMENDED_VALUE"]) : Convert.ToInt32(row["APPROVED_VALUE"]),
@@ -266,6 +365,14 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<td>" + expReqPrepareMstInfo.VerifiedDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.VerifiedDate + "</td>" +
                                                         "</tr>" +
+
+                                                            "<tr>" +
+                                                                 "<td>Forword By</td>" +
+                                                                  "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
+                                                                 "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
+                                                                 "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
+                                                             "</tr>" +
+
                                                         "<tr>" +
                                                             "<td>Checked By</td>" +
                                                              "<td>" + expReqPrepareMstInfo.CheckedName + "</td>" +
@@ -397,6 +504,14 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<td>" + expReqPrepareMstInfo.VerifiedDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.VerifiedDate + "</td>" +
                                                         "</tr>" +
+
+                                                            "<tr>" +
+                                                                 "<td>Forword By</td>" +
+                                                                  "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
+                                                                 "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
+                                                                 "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
+                                                             "</tr>" +
+
                                                         "<tr>" +
                                                             "<td>Checked By</td>" +
                                                              "<td>" + expReqPrepareMstInfo.CheckedName + "</td>" +

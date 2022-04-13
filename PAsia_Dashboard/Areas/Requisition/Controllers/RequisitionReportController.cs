@@ -14,7 +14,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Controllers
 {
     [LogInChecker]
     public class RequisitionReportController : Controller
-    {
+    { 
         RequisitionReportDAL requisitionReportDAL = new RequisitionReportDAL();
         // GET: Requisition/RequisitionReport
         public ActionResult frmRequisitionReport()
@@ -55,6 +55,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Controllers
 
             string preparedBySignaturePath = Server.MapPath("~/Image/Signature/");
             string checkedBySignaturePath = Server.MapPath("~/Image/Signature/");
+            string DivisionalBySignaturePath = Server.MapPath("~/Image/Signature/");
             string verifiedBySignaturePath = Server.MapPath("~/Image/Signature/");
             string recommendedBySignaturePath = Server.MapPath("~/Image/Signature/");
             string approvedBySignaturePath = Server.MapPath("~/Image/Signature/");
@@ -63,6 +64,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Controllers
             rd.SetParameterValue("imageUrl", imagePath);
             rd.SetParameterValue("PreparedBySignatureUrl", signaturePath);
             rd.SetParameterValue("CheckedBySignatureUrl", signaturePath);
+            rd.SetParameterValue("DivisionalBySignatureUrl", signaturePath);
             rd.SetParameterValue("VerifiedBySignatureUrl", signaturePath);
             rd.SetParameterValue("RecommendedBySignatureUrl", signaturePath);
             rd.SetParameterValue("ApprovedBySignatureUrl", signaturePath);
@@ -93,6 +95,8 @@ namespace PAsia_Dashboard.Areas.Requisition.Controllers
             vPreparedBySign = (TextObject)rd.ReportDefinition.ReportObjects["txtPreparedBySign"];
             vPreparedBySign.Text = headingBEL.PreparedBy;
 
+
+
             TextObject vCheckedBy;
             vCheckedBy = (TextObject)rd.ReportDefinition.ReportObjects["txtCheckedBy"];
             vCheckedBy.Text = headingBEL.CheckedBy;
@@ -105,6 +109,21 @@ namespace PAsia_Dashboard.Areas.Requisition.Controllers
             vCheckedBySign = (TextObject)rd.ReportDefinition.ReportObjects["txtCheckedBySign"];
             vCheckedBySign.Text = headingBEL.CheckedBy;
 
+
+            TextObject vDivisionalBy;
+            vDivisionalBy = (TextObject)rd.ReportDefinition.ReportObjects["txtDivisionalBy"];
+            vDivisionalBy.Text = headingBEL.DivisionalBy;
+
+            TextObject vDivisionalByForStatus;
+            vDivisionalByForStatus = (TextObject)rd.ReportDefinition.ReportObjects["txtDivisionalByForStatus"];
+            vDivisionalByForStatus.Text = headingBEL.DivisionalBy;
+
+            TextObject vDivisionalBySign;
+            vDivisionalBySign = (TextObject)rd.ReportDefinition.ReportObjects["txtDivisionalBySign"];
+            vDivisionalBySign.Text = headingBEL.DivisionalBy;
+
+
+                                                                                
             TextObject vVerifiedBy;
             vVerifiedBy = (TextObject)rd.ReportDefinition.ReportObjects["txtVerifiedBy"];
             vVerifiedBy.Text = headingBEL.VerifiedBy;

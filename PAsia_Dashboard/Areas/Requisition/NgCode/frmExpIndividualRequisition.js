@@ -69,18 +69,26 @@
         { name: 'PrepareName', displayName: "PrepareName", visible: false },
         { name: 'PrepareDesig', displayName: "PrepareDesig", visible: false },
         { name: 'PrepareDate', displayName: "Prepare Date" },
+
         { name: 'CheckedName', displayName: "CheckedName", visible: false },
         { name: 'CheckedDesig', displayName: "CheckedDesig", visible: false },
-         { name: 'CheckedStatus', displayName: "Che. Status" },
+        { name: 'CheckedStatus', displayName: "Che. Status" },
         { name: 'CheckedDate', displayName: "Che. Date" },
+
         { name: 'PreparedByConfirm', displayName: "Confirm" },
+
+        { name: 'DivisionalName', displayName: "ForwordName", visible: false },
+        { name: 'DivisionalDesig', displayName: "ForwordDesig", visible: false },
+        { name: 'DivisionalStatus', displayName: "ForwordStatus" },
+        { name: 'DivisionalDate', displayName: "ForwordDate" },
+
         { name: 'VerifiedName', displayName: "VerifiedName", visible: false },
         { name: 'VerifiedDesig', displayName: "VerifiedDesig", visible: false },
-         { name: 'VerifiedStatus', displayName: "Ver. Status" },
+        { name: 'VerifiedStatus', displayName: "Ver. Status" },
         { name: 'VerifiedDate', displayName: "Ver. Date" },
         { name: 'RecommendedName', displayName: "RecommendedName", visible: false },
         { name: 'RecommendedDesig', displayName: "RecommendedDesig", visible: false },
-         { name: 'RecommendedStatus', displayName: "Recommended Status" },
+        { name: 'RecommendedStatus', displayName: "Recommended Status" },
         { name: 'RecommendedDate', displayName: "Rec. Date"},
         { name: 'ApprovedName', displayName: "ApprovedName", visible: false },
         { name: 'ApprovedDesig', displayName: "ApprovedDesig", visible: false },
@@ -112,9 +120,15 @@
         $scope.PrepareName = row.entity.PrepareName;
         $scope.PrepareDesig = row.entity.PrepareDesig;
         $scope.PrepareDate = row.entity.PrepareDate;
+
         $scope.CheckedName = row.entity.CheckedName;
         $scope.CheckedDesig = row.entity.CheckedDesig;
         $scope.CheckedDate = row.entity.CheckedDate;
+
+        $scope.DivisionalName = row.entity.DivisionalName;
+        $scope.DivisionalDesig = row.entity.DivisionalDesig;
+        $scope.DivisionalDate = row.entity.DivisionalDate;
+
         $scope.VerifiedName = row.entity.VerifiedName;
         $scope.VerifiedDesig = row.entity.VerifiedDesig;
         $scope.VerifiedDate = row.entity.VerifiedDate;
@@ -137,6 +151,7 @@
         { name: 'Purpose', displayName: "Purpose" },
         { name: 'PrepareValue', displayName: "Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'CheckedValue', displayName: "Checked Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
+        { name: 'DivisionalValue', displayName: "Forword Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'VerifiedValue', displayName: "Verified Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'RecommendedValue', displayName: "Recommended Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'ApprovedValue', displayName: "Approved Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
@@ -167,6 +182,7 @@
         $scope.ToDate = "";
         $scope.PrepareDate = "";
         $scope.CheckedDate = "";
+        $scope.DivisionalDate = "";
         $scope.VerifiedDate = "";
         $scope.RecommendedDate = "";
         $scope.ApprovedDate = "";
