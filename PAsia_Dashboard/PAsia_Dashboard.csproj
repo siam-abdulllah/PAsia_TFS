@@ -3091,7 +3091,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Areas\Requisition\Reports\rptRequisition.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptRequisition.cs</LastGenOutput>
+      <LastGenOutput>rptRequisition1.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

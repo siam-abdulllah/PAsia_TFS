@@ -236,7 +236,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
         {
             try
             {
-                string qry = "SELECT DTL_ID, MST_ID, MOP,PREPARED_VALUE,CHECKED_VALUE,NVL(DIVISIONAL_VALUE,0)DIVISIONAL_VALUE,VERIFIED_VALUE,RECOMMENDED_VALUE,NVL(APPROVED_VALUE,0) APPROVED_VALUE,PURPOSE, " +
+                string qry = "SELECT DTL_ID, MST_ID, MOP,PREPARED_VALUE,nvl(CHECKED_VALUE,0)CHECKED_VALUE,NVL(DIVISIONAL_VALUE,0)DIVISIONAL_VALUE,nvl(VERIFIED_VALUE,0)VERIFIED_VALUE,nvl(RECOMMENDED_VALUE,0)RECOMMENDED_VALUE,NVL(APPROVED_VALUE,0) APPROVED_VALUE,PURPOSE, " +
                     " TO_CHAR(FROM_DATE,'dd/MM/YYYY') FROM_DATE, TO_CHAR(TO_DATE,'dd/MM/YYYY') TO_DATE,TO_CHAR(REQUIRED_DATE,'dd/MM/YYYY') REQUIRED_DATE,REMARKS, TOTAL_DAYS FROM EXP_REQUISITION_DTL WHERE MST_ID=" + mstId;
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
@@ -367,7 +367,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                         "</tr>" +
 
                                                             "<tr>" +
-                                                                 "<td>Forword By</td>" +
+                                                                 "<td>Forworded By</td>" +
                                                                   "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
@@ -506,7 +506,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                         "</tr>" +
 
                                                             "<tr>" +
-                                                                 "<td>Forword By</td>" +
+                                                                 "<td>Forworded By</td>" +
                                                                   "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +

@@ -247,7 +247,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
         {
             try
             {
-                string qry = "SELECT DTL_ID, MST_ID, MOP,PREPARED_VALUE,CHECKED_VALUE,NVL(DIVISIONAL_VALUE,0)DIVISIONAL_VALUE,NVL(VERIFIED_VALUE,0) VERIFIED_VALUE,PURPOSE, " +
+                string qry = "SELECT DTL_ID, MST_ID, MOP,NVL(PREPARED_VALUE,0)PREPARED_VALUE,NVL(CHECKED_VALUE,0)CHECKED_VALUE,NVL(DIVISIONAL_VALUE,0)DIVISIONAL_VALUE,NVL(VERIFIED_VALUE,0) VERIFIED_VALUE,PURPOSE, " +
                     " TO_CHAR(FROM_DATE,'dd/MM/YYYY') FROM_DATE, TO_CHAR(TO_DATE,'dd/MM/YYYY') TO_DATE,TO_CHAR(REQUIRED_DATE,'dd/MM/YYYY') REQUIRED_DATE,REMARKS, TOTAL_DAYS FROM EXP_REQUISITION_DTL WHERE MST_ID=" + mstId;
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
@@ -372,7 +372,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                  "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                              "</tr>" +
                                              "<tr>" +
-                                                 "<td>Forword By</td>" +
+                                                 "<td>Forworded By</td>" +
                                                   "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                  "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                  "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
@@ -417,7 +417,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                                 "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                                             "</tr>" +
                                                             "<tr>" +
-                                                                "<td>Forword By</td>" +
+                                                                "<td>Forworded By</td>" +
                                                                 "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                                 "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                                 "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
@@ -467,7 +467,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                              "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                          "</tr>" +
                                         "<tr>" +
-                                            "<td>Forword By</td>" +
+                                            "<td>Forworded By</td>" +
                                             "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                             "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                             "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
@@ -604,7 +604,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                  "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                              "</tr>" +
                                              "<tr>" +
-                                                 "<td> Forword By</td>" +
+                                                 "<td> Forworded By</td>" +
                                                   "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                  "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                  "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
@@ -649,7 +649,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                                 "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                                             "</tr>" +
                                                              "<tr>" +
-                                                                 "<td>Forword By</td>" +
+                                                                 "<td>Forworded By</td>" +
                                                                   "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
@@ -699,7 +699,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                              "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                          "</tr>" +
                                              "<tr>" +
-                                                 "<td>Forword By</td>" +
+                                                 "<td>Forworded By</td>" +
                                                   "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                  "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                  "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
