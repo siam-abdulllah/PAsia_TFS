@@ -266,7 +266,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<th>Date</th>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Checked By</td>" +
+                                                            "<td>Forwarded By</td>" +
                                                              "<td>[" + empCode + "]" + empName + "</td>" +
                                                             "<td>" + empDesig + "</td>" +
                                                             "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
@@ -420,7 +420,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<th>Date</th>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Checked By</td>" +
+                                                            "<td>Forwarded By</td>" +
                                                              "<td>[" + empCode + "]" + empName + "</td>" +
                                                             "<td>" + empDesig + "</td>" +
                                                             "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +

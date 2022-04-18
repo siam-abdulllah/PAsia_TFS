@@ -372,7 +372,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                  "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                              "</tr>" +
                                              "<tr>" +
-                                                 "<td>Forworded By</td>" +
+                                                 "<td>Forwarded by</td>" +
                                                   "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                  "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                  "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +

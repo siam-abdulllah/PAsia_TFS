@@ -451,7 +451,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                         "</tr>" +
 
                                                             "<tr>" +
-                                                                 "<td>Forword By</td>" +
+                                                                 "<td>Forwarded By</td>" +
                                                                   "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
@@ -587,7 +587,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                         "</tr>" +
 
                                                             "<tr>" +
-                                                                 "<td>Forword By</td>" +
+                                                                 "<td>Forwarded By</td>" +
                                                                   "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +

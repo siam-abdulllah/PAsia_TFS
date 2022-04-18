@@ -166,10 +166,10 @@
         { name: 'PreparedByConfirm', displayName: "Confirm" },
 
 
-        { name: 'DivisionalName', displayName: "Divisional Name" },
-        { name: 'DivisionalDesig', displayName: "Divisional Desig" },
-        { name: 'DivisionalDate', displayName: "Divisional Date" },
-        { name: 'DivisionalStatus', displayName: "Divisional Status" },
+        { name: 'DivisionalName', displayName: "Forwarded Name" },
+        { name: 'DivisionalDesig', displayName: "Forwarded Desig" },
+        { name: 'DivisionalDate', displayName: "Forwarded Date" },
+        { name: 'DivisionalStatus', displayName: "Forwarded Status" },
 
 
         { name: 'VerifiedName', displayName: "VerifiedName", visible: false },
@@ -259,7 +259,7 @@
         { name: 'Purpose', displayName: "Purpose" },
         { name: 'PrepareValue', displayName: "Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'CheckedValue', displayName: "Checked Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
-        { name: 'DivisionalValue', displayName: "Divisional Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
+        { name: 'DivisionalValue', displayName: "Forwarded Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'VerifiedValue', displayName: "Verified Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'RecommendedValue', displayName: "Recommended Amount", cellFilter: 'number:2', aggregationType: uiGridConstants.aggregationTypes.sum, footerCellFilter: 'number:2' },
         { name: 'FromDate', displayName: "From Date" },
