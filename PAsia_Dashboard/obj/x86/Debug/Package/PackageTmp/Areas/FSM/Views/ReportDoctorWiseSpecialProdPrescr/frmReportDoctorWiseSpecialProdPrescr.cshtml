@@ -1,0 +1,86 @@
+﻿
+@{
+    /**/
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+</style>
+<script src="~/Areas/FSM/NgCode/frmReportDoctorWiseSpecialProdPrescr.js"></script>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <div class="loader ng-cloak LoaderStyle" data-loading>
+        @*<img src="~/Content/img/avatar.png" width="100px;" height="100px;" style="top: 50%; left: 50%;" />*@
+        <img src="~/Content/img/loader.gif" width="100px;" height="100px;" style="top: 50%; left: 50%;" />
+    </div>
+    <div class="form-horizontal" ng-form="frmReportDoctorWiseSpecialProdPrescr">
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            @* <h3 class="box-title">{{FormTitle}}</h3>*@
+                            <div class="form-group">
+                                <div class="col-md-5">
+                                    <h2 class="box-title">
+                                        <strong ng-cloak>{{FormTitle}}</strong>
+                                    </h2>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="text-right  m-t-10">
+                                        <button type="button" class="btn btn-embossed btn-danger" ng-click="Reset()"><i class="fa fa-refresh"></i>&nbsp Reset</button>
+                                        <button type="button" class="btn btn-embossed btn-success" ng-click="GetGridData()"><i class="fa fa-search"></i>&nbspView</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <form role="form">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                            </div>
+                                            <div class="col-md-11">
+                                                <div class="form-group">
+                                                    <div class="col-md-4" style="padding: 0;">
+                                                        <label class="control-label required">Date(From-To):</label>
+                                                    </div>
+                                                    <div class="col-md-4" style="padding: 0;">
+                                                        <div class="input-group date">
+                                                            <input type="text" class="form-control pull-right datepicker clickable" ng-model="FromDate" required readonly ng-cloak>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4" style="padding: 0;">
+                                                        <div class="input-group date">
+                                                            <input type="text" class="form-control pull-right datepicker clickable" ng-model="ToDate" required readonly ng-cloak>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="gridReportDoctorWiseSpecialProdPrescr" ui-grid="gridReportDoctorWiseSpecialProdPrescr" class="grid" style="height: 320px; width: 100%;" ui-grid-auto-resize ui-grid-resize-columns ui-grid-grouping ui-grid-exporter ui-grid-pinning></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.datepicker').datepicker({
+            todayBtn: "linked",
+            autoclose: true,
+            todayHighlight: true,
+            format: 'dd-mm-yyyy',
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+</script>
+

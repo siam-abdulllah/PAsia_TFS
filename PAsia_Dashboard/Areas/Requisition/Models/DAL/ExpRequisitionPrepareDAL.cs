@@ -94,7 +94,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
         {
             try
             {
-                string qry = "SELECT DTL_ID, MST_ID, MOP,PREPARED_VALUE,PURPOSE, " +
+                string qry = "SELECT DTL_ID, MST_ID, MOP,NVL(PREPARED_VALUE,0)PREPARED_VALUE,PURPOSE, " +
                     " TO_CHAR(FROM_DATE,'dd/MM/YYYY') FROM_DATE, TO_CHAR(TO_DATE,'dd/MM/YYYY') TO_DATE,TO_CHAR(REQUIRED_DATE,'dd/MM/YYYY') REQUIRED_DATE,REMARKS, TOTAL_DAYS FROM EXP_REQUISITION_DTL WHERE MST_ID=" + mstId;
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
@@ -493,7 +493,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<th>Date</th>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Prepared By</td>" +
+                                                            "<td>Prepared by</td>" +
                                                             "<td>[" + empCode + "] " + empName + "</td>" +
                                                             "<td>" + empDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareDate + "</td>" +

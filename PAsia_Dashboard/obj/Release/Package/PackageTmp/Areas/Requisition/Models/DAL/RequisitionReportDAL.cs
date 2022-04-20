@@ -99,7 +99,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                 Qry = Qry + " AND TO_DATE(VERIFIED_DATE,'dd/MM/YYYY') BETWEEN TO_DATE('" + model.ApprovedFromDate + "','dd/MM/YYYY') AND TO_DATE('" + model.ApprovedToDate + "','dd/MM/YYYY') ";
             }
             // Qry = Qry + " AND VERIFIED_STATUS='Approved' AND TOTAL_APPROVED_VALUE<=10000";
-            Qry = Qry + " AND VERIFIED_STATUS='Approved' AND TOTAL_APPROVED_VALUE>10000  AND REQUISITION_TYPE IN (SELECT TYPE_NAME FROM REQ_TYPE_LIMIT WHERE STATUS='A') ";
+            Qry = Qry + " AND VERIFIED_STATUS='Approved' AND TOTAL_APPROVED_VALUE > 10000  AND REQUISITION_TYPE IN (SELECT TYPE_NAME FROM REQ_TYPE_LIMIT WHERE STATUS='A') ";
             Qry = Qry + " order by REQUISITION_NO DESC";
 
             DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), Qry);
@@ -137,6 +137,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
 
             //Qry = Qry + " AND VERIFIED_STATUS='Approved' AND TOTAL_APPROVED_VALUE<=10000";
            // Qry = Qry + " AND VERIFIED_STATUS='Approved' AND (TOTAL_APPROVED_VALUE<=50000 OR REQUISITION_TYPE='Adjustment' ) ";
+
             Qry = Qry + " AND VERIFIED_STATUS='Approved' AND TOTAL_APPROVED_VALUE<=50000 ";
 
             Qry = Qry + " UNION SELECT DISTINCT PREPARED_BY, PREPARED_BY_NAME FROM " +

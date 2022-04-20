@@ -1,0 +1,556 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #chartBarDiv {
+        width: 100 ;
+        height: 450px;
+    }
+</style>
+<script src="~/Areas/Dashboard/NgCode/frmFactoryDashboard.js"></script>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <div class="loader ng-cloak LoaderStyle" data-loading>
+        @*<img src="~/Content/img/avatar.png" width="100px;" height="100px;" style="top: 50 ; left: 50 ;" />*@
+        <img src="~/Content/img/loader.gif" width="100px;" height="100px;" style="top: 50 ; left: 50 ;" />
+    </div>
+
+    <div class="form-horizontal" ng-form="frmFactoryDashboard">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>
+                        Dashboard
+                        <small ng-cloak>{{POSTING_LOCATION}}</small>
+                    </h3>
+                </div>
+                <div class="col-md-3">
+                    <h5 ng-cloak> <b>{{dashBoardToDayDate}}</b></h5>
+                </div>
+                <div class="col-md-3">
+                    @*<h6 ng-cloak> <b>Current Time:{{dashBoardCurrentTime}}</b></h6>*@
+                    <h5 id="clock" style="font-weight:bold;"></h5>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+            <ol class="breadcrumb">
+                @*<li><button id="chartButton">Chart</button></li>*@
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+
+        </section>
+        <section class="content">
+            <div class="row dashboard">
+                <div class="col-md-2 col-md-offset-1">
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <p ng-cloak>No. Of Batch</p>
+                            <h3 ng-cloak>{{dashboardData.NoOfBatch=== "" || dashboardData.NoOfBatch===null ? "0": dashboardData.NoOfBatch}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-fuchsia">
+                        <div class="inner">
+                            <p>Raw Materials Issue Value</p>
+                            <h3 ng-cloak>{{dashboardData.RawMatIssueVal=== "" || dashboardData.RawMatIssueVal===null ? "0": dashboardData.RawMatIssueVal}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <p>Raw Materials Received Value</p>
+                            <h3 ng-cloak>{{dashboardData.RawMatRcvVal=== "" || dashboardData.RawMatRcvVal===null ? "0": dashboardData.RawMatRcvVal}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-blue">
+                        <div class="inner">
+                            <p>Raw Materials Released Value </p>
+                            <h3 ng-cloak>{{dashboardData.RawMatRelVal=== "" || dashboardData.RawMatRelVal===null ? "0": dashboardData.RawMatRelVal}} </h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <p>Packaging Materials Issue Value</p>
+                            <h3 ng-cloak>{{dashboardData.PackMatIssueVal=== "" || dashboardData.PackMatIssueVal===null ? "0": dashboardData.PackMatIssueVal}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row dashboard">
+                <div class="col-md-2 col-md-offset-1">
+                    <div class="small-box bg-fuchsia">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>Packaging Materials Received Value</p>
+                                    <h3 ng-cloak>{{dashboardData.PackMatRcvVal=== "" || dashboardData.PackMatRcvVal===null ? "0": dashboardData.PackMatRcvVal}}</h3>
+                                </div>
+                            </div>
+
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>Packaging  Materials Released Value</p>
+                                    <h3 ng-cloak>{{dashboardData.PackMatRelVal=== "" || dashboardData.PackMatRelVal===null ? "0": dashboardData.PackMatRelVal}}</h3>
+                                </div>
+                            </div>
+
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-blue">
+                        <div class="inner">
+                            <p>Finished Product Trans. From Production to Warehouse box</p>
+                            <h3 ng-cloak>{{dashboardData.ProdToWarBox=== "" || dashboardData.ProdToWarBox===null ? "0": dashboardData.ProdToWarBox}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <p>Finished Product Trans. From Warehouse to CWH box.</p>
+                            <h3 ng-cloak>{{dashboardData.WarToCWHBox=== "" || dashboardData.WarToCWHBox===null ? "0": dashboardData.WarToCWHBox}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-orange">
+                        <div class="inner">
+                            <p> No of QC Test Request Toady</p>
+                            <h3 ng-cloak>{{dashboardData.NoOfQCTestToday=== "" || dashboardData.NoOfQCTestToday===null ? "0": dashboardData.NoOfQCTestToday}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row dashboard">
+                <div class="col-md-2 col-md-offset-1">
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <p>No of Req PM Today(SCM)</p>
+                            <h3 ng-cloak>{{dashboardData.NoOfPMReqToday=== "" || dashboardData.NoOfPMReqToday===null ? "0": dashboardData.NoOfPMReqToday}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-blue">
+                        <div class="inner">
+                            <p>No of Req RM Total (SCM)</p>
+                            <h3 ng-cloak>{{dashboardData.NoOfRMReqTotal=== "" || dashboardData.NoOfRMReqTotal===null ? "0": dashboardData.NoOfRMReqTotal}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 ">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <p>No of PM Requisition Total(SCM)</p>
+                            <h3 ng-cloak>{{dashboardData.NoOfPMReqTotal=== "" || dashboardData.NoOfPMReqTotal===null ? "0": dashboardData.NoOfPMReqTotal}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-orange">
+                        <div class="inner">
+                            <p>Same RM Requisition no of (30 - 40) Item</p>
+                            <h3 ng-cloak>{{dashboardData.NoOfRMReqThirtyForty=== "" || dashboardData.NoOfRMReqThirtyForty===null ? "0": dashboardData.NoOfRMReqThirtyForty}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-maroon">
+                        <div class="inner">
+                            <p>Same PM Requisition no of  (50 -100) iteams</p>
+                            <h3 ng-cloak>{{dashboardData.NoOfPMReqFiftyHundred=== "" || dashboardData.NoOfPMReqFiftyHundred===null ? "0": dashboardData.NoOfPMReqFiftyHundred}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row dashboard">
+                <div class="col-md-2 col-md-offset-1" ng-show="ACCESS_LEVEL==='N' || ACCESS_LEVEL==='D'">
+                    <div class="small-box bg-blue">
+                        <div class="inner">
+                            <p>No.of RM (Test Result)</p>
+                            <h3 ng-cloak>{{dashboardData.NoOfRMTest=== "" || dashboardData.NoOfRMTest===null ? "0": dashboardData.NoOfRMTest}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-blue">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>No.of PM (Test Result)</p>
+                                    <h3 ng-cloak>{{dashboardData.NoOfPMTest=== "" || dashboardData.NoOfPMTest===null ? "0": dashboardData.NoOfPMTest}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <p>No.of Microbiology (Packging QC Test)</p>
+                            <h3 ng-cloak>{{dashboardData.NoOfMicrobiologyTest=== "" || dashboardData.NoOfMicrobiologyTest===null ? "0": dashboardData.NoOfMicrobiologyTest}}</h3>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-orange">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>Today No of LOP</p>
+                                    <h3 ng-cloak>{{dashboardData.NoOfLOPToday=== "" || dashboardData.NoOfLOPToday===null ? "0": dashboardData.NoOfLOPToday}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-maroon">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>Total No of LPO Up Todate</p>
+                                    <h3 ng-cloak>{{dashboardData.NoOfLOPUpTo=== "" || dashboardData.NoOfLOPUpTo===null ? "0": dashboardData.NoOfLOPUpTo}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>No of LC (Upto date)</p>
+                                    <h3 ng-cloak>{{dashboardData.NoOfLCUpTo=== "" || dashboardData.NoOfLCUpTo===null ? "0": dashboardData.NoOfLCUpTo}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row dashboard">
+                <div class="col-md-2 col-md-offset-1">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>Today No of CS</p>
+                                    <h3 ng-cloak>{{dashboardData.NoOfCSToday=== "" || dashboardData.NoOfCSToday===null ? "0": dashboardData.NoOfCSToday}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-orange">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>Total No of CS</p>
+                                    <h3 ng-cloak>{{dashboardData.NoOfCSTotal=== "" || dashboardData.NoOfCSTotal===null ? "0": dashboardData.NoOfCSTotal}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-maroon">
+                        <div class="inner">
+                            <div class="inner">
+                                <div class="row">
+                                    <div class="col-md-12" style="padding:0;text-align:center">
+                                        <p>Commercial Stock Quantity Current</p>
+                                        <h3 ng-cloak>{{dashboardData.NoOfCommStockCurr=== "" || dashboardData.NoOfCommStockCurr===null ? "0": dashboardData.NoOfCommStockCurr}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>Sample Stock quantity Current </p>
+                                    <h3 ng-cloak>{{dashboardData.NoOfSampleStockCurr=== "" || dashboardData.NoOfSampleStockCurr===null ? "0": dashboardData.NoOfSampleStockCurr}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>No of Other Received Requisition RM Today</p>
+                                    <h3 ng-cloak>{{dashboardData.NoOfRMOtherRcvReqToday=== "" || dashboardData.NoOfRMOtherRcvReqToday===null ? "0": dashboardData.NoOfRMOtherRcvReqToday}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <div class="row dashboard">
+                <div class="col-md-2 col-md-offset-1">
+                    <div class="small-box bg-orange">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>No of Other Received Requisition RM Total</p>
+                                    <h3 ng-cloak>{{dashboardData.NoOfRMOtherRcvReqTotal=== "" || dashboardData.NoOfRMOtherRcvReqTotal===null ? "0": dashboardData.NoOfRMOtherRcvReqTotal}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-maroon">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>No of Other Received Requisition PM Today</p>
+                                    <h3 ng-cloak>{{dashboardData.NoOfPMOtherRcvReqToday=== "" || dashboardData.NoOfPMOtherRcvReqToday===null ? "0": dashboardData.NoOfPMOtherRcvReqToday}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <div class="inner">
+                                <div class="row">
+                                    <div class="col-md-12" style="padding:0;text-align:center">
+                                        <p>No of Other Received Requisition PM Total</p>
+                                        <h3 ng-cloak>{{dashboardData.NoOfPMOtherRcvReqTotal=== "" || dashboardData.NoOfPMOtherRcvReqTotal===null ? "0": dashboardData.NoOfPMOtherRcvReqTotal}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-md-2">
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-md-12" style="padding:0;text-align:center">
+                                    <p>Sample Stock quantity Current </p>
+                                    <h3 ng-cloak>{{dashboardData.NoOfSampleStockCurr=== "" || dashboardData.NoOfSampleStockCurr===null ? "0": dashboardData.NoOfSampleStockCurr}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+            @*<br />
+            <div class="row" ng-hide="ACCESS_LEVEL!=='N'">
+                <fieldset>
+                    <legend class="collapsable clickable" ng-click="GetZWiseSalesAchValue()"><i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;Zone Wise Sales (Value)</legend>
+                    <div class="row">
+                        <div id="gridZWiseSalesAchValue" ui-grid="gridZWiseSalesAchOptionsValue" class="grid" style="height: 320px; width: 100 ;" ui-grid-auto-resize ui-grid-resize-columns ui-grid-grouping ui-grid-exporter></div>
+                    </div>
+                </fieldset>
+            </div>
+            <br />
+            <div class="row" ng-hide=" ACCESS_LEVEL!=='N'">
+                <fieldset>
+                    <legend class="collapsable clickable" ng-click="GetRWiseSalesAchValue()"><i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;Region Wise Sales (Value)</legend>
+                    <div class="row">
+                        <div id="gridRWiseSalesAchValue" ui-grid="gridRWiseSalesAchOptionsValue" class="grid" style="height: 320px; width: 100 ;" ui-grid-auto-resize ui-grid-resize-columns ui-grid-grouping ui-grid-exporter></div>
+                    </div>
+                </fieldset>
+            </div>
+            <br />
+            <div class="row" ng-hide=" ACCESS_LEVEL!=='N'">
+                <fieldset>
+                    <legend class="collapsable clickable" ng-click="GetProdWiseSalesAchValue()"><i class="fa fa-plus-square-o"></i>&nbsp;&nbsp;Product Sales</legend>
+                    <div class="row">
+                        <div id="gridProdWiseSalesAchValue" ui-grid="gridProdWiseSalesAchOptionsValue" class="grid" style="height: 318px; width: 100 ;" ui-grid-auto-resize ui-grid-resize-columns ui-grid-grouping ui-grid-exporter></div>
+                    </div>
+                </fieldset>
+            </div>*@
+        </section>
+        <div class="modal fade" id="BarModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Sales Information</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">UP to Month Sales (Lac)</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div class="chart">
+                                        <canvas id="barChart" style="height:230px"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="homeBarChart_modal" role="dialog">
+            <div class="modal-dialog home-Dashboard">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Region Wise Up To Month ({{CurrentMonthName}}) Sales</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div id="chartBarDiv"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function displayCurrentTime() {
+        let currentTime = new Date();
+        let hours = currentTime.getHours();
+        let minutes = currentTime.getMinutes();
+        let seconds = currentTime.getSeconds();
+        let amOrPm = hours < 12 ? "AM" : "PM";
+
+        hours = hours === 0 ? 12 : hours > 12 ? hours - 12 : hours;
+        hours = addZero(hours);
+        minutes = addZero(minutes);
+        seconds = addZero(seconds);
+        let timeString = `${hours} : ${minutes} : ${seconds} ${amOrPm}`;
+        document.getElementById("clock").innerText = "Current Time: " + timeString;
+        let timer = setTimeout(displayCurrentTime, 1000);
+    }
+    function addZero(component) {
+        return component < 10 ? "0" + component : component;
+    }
+    displayCurrentTime();
+</script>

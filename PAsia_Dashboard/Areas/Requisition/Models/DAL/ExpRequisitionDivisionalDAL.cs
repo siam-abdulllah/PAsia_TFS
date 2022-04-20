@@ -128,7 +128,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
         {
             try
             {
-                string qry = "SELECT DTL_ID, MST_ID, MOP,PREPARED_VALUE,NVL(CHECKED_VALUE,0) CHECKED_VALUE,NVL(DIVISIONAL_VALUE,0) DIVISIONAL_VALUE,PURPOSE, " +
+                string qry = "SELECT DTL_ID, MST_ID, MOP,NVL(PREPARED_VALUE,0)PREPARED_VALUE,NVL(CHECKED_VALUE,0) CHECKED_VALUE,NVL(DIVISIONAL_VALUE,0) DIVISIONAL_VALUE,PURPOSE, " +
                     " TO_CHAR(FROM_DATE,'dd/MM/YYYY') FROM_DATE, TO_CHAR(TO_DATE,'dd/MM/YYYY') TO_DATE,TO_CHAR(REQUIRED_DATE,'dd/MM/YYYY') REQUIRED_DATE,REMARKS, TOTAL_DAYS FROM EXP_REQUISITION_DTL WHERE MST_ID=" + mstId;
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
@@ -139,7 +139,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                 Mop = row["MOP"].ToString(),
                                 PrepareValue = Convert.ToInt32(row["PREPARED_VALUE"]),
                                 CheckedValue = Convert.ToInt32(row["CHECKED_VALUE"]),
-                                DivisionalValue = Convert.ToInt32(row["DIVISIONAL_VALUE"]) == 0 ? Convert.ToInt32(row["CHECKED_VALUE"]) : Convert.ToInt32(row["DIVISIONAL_VALUE"]),
+                                DivisionalValue = Convert.ToInt32(row["CHECKED_VALUE"]) == 0 ? Convert.ToInt32(row["PREPARED_VALUE"]) : Convert.ToInt32(row["DIVISIONAL_VALUE"]),
                                 Purpose = row["PURPOSE"].ToString(),
                                 FromDate = row["FROM_DATE"].ToString(),
                                 ToDate = row["TO_DATE"].ToString(),
@@ -266,20 +266,20 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<th>Date</th>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Forwarded By</td>" +
+                                                            "<td>Forwarded by</td>" +
                                                              "<td>[" + empCode + "]" + empName + "</td>" +
                                                             "<td>" + empDesig + "</td>" +
                                                             "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                                         "</tr>                                            " +
                                                         "<tr>" +
-                                                             "<td>Checked By</td>" +
+                                                             "<td>Checked by</td>" +
                                                               "<td>" + expReqPrepareMstInfo.CheckedName + "</td>" +
                                                              "<td>" + expReqPrepareMstInfo.CheckedDesig + "</td>" +
                                                              "<td>" + expReqPrepareMstInfo.CheckedDate + "</td>" +
                                                          "</tr>" +
 
                                                         "<tr>" +
-                                                            "<td>Prepared By</td>" +
+                                                            "<td>Prepared by</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareName + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareDate + "</td>" +
@@ -420,21 +420,21 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<th>Date</th>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Forwarded By</td>" +
+                                                            "<td>Forwarded by</td>" +
                                                              "<td>[" + empCode + "]" + empName + "</td>" +
                                                             "<td>" + empDesig + "</td>" +
                                                             "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                                         "</tr>                                            " +
 
                                                         "<tr>" +
-                                                             "<td>Checked By</td>" +
+                                                             "<td>Checked by</td>" +
                                                               "<td>" + expReqPrepareMstInfo.CheckedName + "</td>" +
                                                              "<td>" + expReqPrepareMstInfo.CheckedDesig + "</td>" +
                                                              "<td>" + expReqPrepareMstInfo.CheckedDate + "</td>" +
                                                          "</tr>" +
 
                                                         "<tr>" +
-                                                            "<td>Prepared By</td>" +
+                                                            "<td>Prepared by</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareName + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareDate + "</td>" +

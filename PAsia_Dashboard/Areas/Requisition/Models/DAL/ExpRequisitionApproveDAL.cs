@@ -236,7 +236,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
         {
             try
             {
-                string qry = "SELECT DTL_ID, MST_ID, MOP,PREPARED_VALUE,nvl(CHECKED_VALUE,0)CHECKED_VALUE,NVL(DIVISIONAL_VALUE,0)DIVISIONAL_VALUE,nvl(VERIFIED_VALUE,0)VERIFIED_VALUE,nvl(RECOMMENDED_VALUE,0)RECOMMENDED_VALUE,NVL(APPROVED_VALUE,0) APPROVED_VALUE,PURPOSE, " +
+                string qry = "SELECT DTL_ID, MST_ID, MOP,NVL(PREPARED_VALUE,0)PREPARED_VALUE,nvl(CHECKED_VALUE,0)CHECKED_VALUE,NVL(DIVISIONAL_VALUE,0)DIVISIONAL_VALUE,nvl(VERIFIED_VALUE,0)VERIFIED_VALUE,nvl(RECOMMENDED_VALUE,0)RECOMMENDED_VALUE,NVL(APPROVED_VALUE,0) APPROVED_VALUE,PURPOSE, " +
                     " TO_CHAR(FROM_DATE,'dd/MM/YYYY') FROM_DATE, TO_CHAR(TO_DATE,'dd/MM/YYYY') TO_DATE,TO_CHAR(REQUIRED_DATE,'dd/MM/YYYY') REQUIRED_DATE,REMARKS, TOTAL_DAYS FROM EXP_REQUISITION_DTL WHERE MST_ID=" + mstId;
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
@@ -333,7 +333,15 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                     break;
                                 }
                             }
+
                             trans.Commit();
+                            var Totamountqry = "select sum(nvl(APPROVED_VALUE,0)) from EXP_REQUISITION_DTL WHERE  MST_ID=" + MaxID + "";
+                            var Totamount = dbHelper.GetValue(dbConnection.SAConnStrReader("Sales"), Totamountqry);
+                            string qryMst2 = "UPDATE  EXP_REQUISITION_MST SET  TOTAL_APPROVED_VALUE=" + Totamount + " WHERE MST_ID=" + MaxID + "";
+                            var A = dbHelper.CmdExecute(dbConnection.SAConnStrReader("Sales"), qryMst2);
+
+
+
                             if (expReqPrepareMstInfo.ApprovedStatus == "Approved")
                             {
                                 var mailTo = dbHelper.GetValue(dbConnection.SAConnStrReader("Sales"), "SELECT EMAIL FROM  EMPLOYEE_INFO  WHERE EMPLOYEE_CODE='" + expReqPrepareMstInfo.PrepareBy + "'");
@@ -348,39 +356,39 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<th>Date</th>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Approved By</td>" +
+                                                            "<td>Approved by</td>" +
                                                              "<td>[" + empCode + "]" + empName + "</td>" +
                                                             "<td>" + empDesig + "</td>" +
                                                             "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Recommended By</td>" +
+                                                            "<td>Recommended by</td>" +
                                                              "<td>" + expReqPrepareMstInfo.RecommendedName + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.RecommendedDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.RecommendedDate + "</td>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Verified By</td>" +
+                                                            "<td>Verified by</td>" +
                                                              "<td>" + expReqPrepareMstInfo.VerifiedName + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.VerifiedDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.VerifiedDate + "</td>" +
                                                         "</tr>" +
 
                                                             "<tr>" +
-                                                                 "<td>Forwarded By</td>" +
+                                                                 "<td>Forwarded by</td>" +
                                                                   "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
                                                              "</tr>" +
 
                                                         "<tr>" +
-                                                            "<td>Checked By</td>" +
+                                                            "<td>Checked by</td>" +
                                                              "<td>" + expReqPrepareMstInfo.CheckedName + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.CheckedDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.CheckedDate + "</td>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Prepared By</td>" +
+                                                            "<td>Prepared by</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareName + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareDate + "</td>" +
@@ -472,7 +480,15 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                     break;
                                 }
                             }
+
                             trans.Commit();
+                            var Totamountqry = "select sum(nvl(APPROVED_VALUE,0)) from EXP_REQUISITION_DTL WHERE  MST_ID=" + MaxID + "";
+                            var Totamount = dbHelper.GetValue(dbConnection.SAConnStrReader("Sales"), Totamountqry);
+                            string qryMst2 = "UPDATE  EXP_REQUISITION_MST SET  TOTAL_APPROVED_VALUE=" + Totamount + " WHERE  MST_ID=" + MaxID + "";
+                            var A = dbHelper.CmdExecute(dbConnection.SAConnStrReader("Sales"), qryMst2);
+
+
+
                             if (expReqPrepareMstInfo.ApprovedStatus == "Approved")
                             {
                                 var mailTo = dbHelper.GetValue(dbConnection.SAConnStrReader("Sales"), "SELECT EMAIL FROM  EMPLOYEE_INFO  WHERE EMPLOYEE_CODE='" + expReqPrepareMstInfo.PrepareBy + "'");
@@ -487,13 +503,13 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                             "<th>Date</th>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Approved By</td>" +
+                                                            "<td>Approved by</td>" +
                                                              "<td>[" + empCode + "]" + empName + "</td>" +
                                                             "<td>" + empDesig + "</td>" +
                                                             "<td>" + DateTime.Now.ToString("dd/MM/yyyy") + "</td>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Recommended By</td>" +
+                                                            "<td>Recommended by</td>" +
                                                              "<td>" + expReqPrepareMstInfo.RecommendedName + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.RecommendedDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.RecommendedDate + "</td>" +
@@ -506,20 +522,20 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                                         "</tr>" +
 
                                                             "<tr>" +
-                                                                 "<td>Forwarded By</td>" +
+                                                                 "<td>Forwarded by</td>" +
                                                                   "<td>" + expReqPrepareMstInfo.DivisionalName + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDesig + "</td>" +
                                                                  "<td>" + expReqPrepareMstInfo.DivisionalDate + "</td>" +
                                                              "</tr>" +
 
                                                         "<tr>" +
-                                                            "<td>Checked By</td>" +
+                                                            "<td>Checked by</td>" +
                                                              "<td>" + expReqPrepareMstInfo.CheckedName + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.CheckedDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.CheckedDate + "</td>" +
                                                         "</tr>" +
                                                         "<tr>" +
-                                                            "<td>Prepared By</td>" +
+                                                            "<td>Prepared by</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareName + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareDesig + "</td>" +
                                                             "<td>" + expReqPrepareMstInfo.PrepareDate + "</td>" +

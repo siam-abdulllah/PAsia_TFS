@@ -1,0 +1,215 @@
+﻿
+@{
+    /**/
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .row {
+        margin: 1%;
+    }
+
+    .form-group {
+        padding: 0 1% 0 1%;
+        margin-bottom: 0.5%;
+        font-size: 11px;
+    }
+
+    .form-control {
+        /*width: 100%;*/
+        height: 20%;
+        font-size: 11px;
+    }
+
+    .datepicker {
+        padding: 6px 12px;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+    }
+</style>
+<script src="~/Areas/Requisition/NgCode/frmRequisitionReport.js"></script>
+@*<script>
+        $(document).ready(function () {
+            //  LoadEmployee();
+            //  GetRequisionNo();
+
+
+            LoadEmployee();
+            GetRequisionNo();
+
+            function GetRequisionNo() {
+                $.ajax({
+                    type: "GET",
+                    url: '@Url.Action("GetRequisitionNo", "RequisitionReport")',
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#RequisitionNo').empty();
+                        $.each(data, function (i, item) {
+                            $('#RequisitionNo').append($('<option>', { value: item.RequisitionNo, html: item.RequisitionNo }, '<option/>'));
+                        });
+                    },
+                    error: function () {
+                        alert("Failed to load RequisitionNo. !!");
+                    }
+                });
+            }
+
+            function LoadEmployee() {
+                $.ajax({
+                    url: '@Url.Action("GetEmployees", "RequisitionReport")',
+                    type: 'GET',
+                    dataType: 'JSON',
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $('#PreparedBy').empty();
+                        $.each(data, function (i, item) {
+                            console.log(item);
+                            $('#PreparedBy').append($('<option>', { value: item.PreparedBy, html: item.PreparedByName }, '<option/>'));
+                        });
+                    },
+
+                    error: function () {
+                        alert("Failed to load Employee !!");
+                    }
+                });
+            }
+        });
+
+    </script>*@
+<script>
+
+
+</script>
+<script src="~/Areas/Requisition/NgCode/frmRequisitionReport.js"></script>
+@using (Html.BeginForm("RV", "RequisitionReport", FormMethod.Post, new { target = "_blank", name = "H1Form", id = "H1Form" }))
+{
+    <div ng-app="myApp" ng-controller="RequisitionReportCtrl">
+        <div class="loader LoaderStyle" ng-cloak data-loading>
+            <img src="~/Content/img/loader.gif" width="100" height="100" style="top: 50%; left: 50%;" />
+        </div>
+        @*<div class="form-horizontal" ng-form="frmExpRequisitionPrepare">*@
+        <div class="form-horizontal" ng-form="frmRequisitionReport">
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-warning">
+                            <div class="box-header with-border">
+                                <div class="row" hidden>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"><div id="MessageText" style="color:red;">Data not found contact with vendor</div></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-5">
+                                        <h2 class="box-title">
+                                            <strong ng-cloak>{{FormTitle}}</strong>
+                                        </h2>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="text-right  m-t-10">
+                                            <button type="button" class="btn btn-embossed btn-danger" ng-click="Reset()"><i class="fa fa-refresh"></i>&nbsp Reset</button>
+                                            <button type="submit" class="btn btn-embossed btn-success" ng-click="ViewReport()" ng-class="{'btn-transparent':frmRequisitionReport.$invalid}" ng-disabled="frmRequisitionReport.$invalid"><i class="fa fa-search"></i>&nbsp View</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <fieldset>
+                                            <legend>Requisiotn Prepare</legend>
+                                            <div class="col-md-2">
+                                                <label class="control-label" ng-class="{'required':IsPrepareDateRequired}">From Date</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control datepicker clickable" placeholder="Calender" id="PrepareFromDate" name="PrepareFromDate" ng-model="PrepareFromDate" ng-change="enablePrepareDate()" ng-required="IsPrepareDateRequired" readonly>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label class="control-label" ng-class="{'required':IsPrepareDateRequired}">To Date</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control datepicker clickable" placeholder="Calender" id="PrepareToDate" name="PrepareToDate" ng-model="PreparePrepareToDate" ng-change="dateFunction()" disabled ng-required="IsPrepareDateRequired" readonly>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="row">
+                                        <fieldset>
+                                            <legend>Requisiotn Approval</legend>
+                                            <div class="col-md-2">
+                                                <label class="control-label" ng-class="{'required':IsApprovedDateRequired}">From Date</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control datepicker clickable" placeholder="Calender" id="ApprovedFromDate" name="ApprovedFromDate" ng-model="ApprovedFromDate" ng-change="enableApprovedDate()" ng-required="IsApprovedDateRequired" readonly>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label class="control-label" ng-class="{'required':IsApprovedDateRequired}">To Date</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input type="text" class="form-control datepicker clickable" placeholder="Calender" id="ApprovedToDate" name="ApprovedToDate" ng-model="ApprovedToDate" ng-change="dateFunction()" disabled ng-required="IsApprovedDateRequired" readonly>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label class="control-label">Employee</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <ui-select class="form-control form-white" ng-model="frmRequisitionReport.PreparedByInfo" theme="select2" ng-cloak ng-change="requisitionLoadFunction()">
+                                                <ui-select-match placeholder="Please Select Employee">{{$select.selected.PreparedByName}}</ui-select-match>
+                                                <ui-select-choices repeat="item in PreparedByList | propsFilter: {PreparedByName: $select.search}">
+                                                    <div ng-bind-html="item.PreparedByName | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                            <input type="text" class="form-control" id="PreparedBy" name="PreparedBy" ng-model="PreparedBy" style="display: none;">
+                                            @*<select id="PreparedBy" name="PreparedBy" ng-change="requisitionLoadFunction()" class="RequiredField form-control"><option value="">Please Select</option></select>*@
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="control-label"> Requisition No. </label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <ui-select class="form-control form-white" ng-model="frmRequisitionReport.Requisition" theme="select2" ng-cloak ng-change="requisitionChangeFunction()">
+                                                <ui-select-match placeholder="Please Select Requisition No">{{$select.selected.RequisitionNo}}</ui-select-match>
+                                                <ui-select-choices repeat="item in RequisitionList | propsFilter: {RequisitionNo: $select.search}">
+                                                    <div ng-bind-html="item.RequisitionNo | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                            </ui-select>
+                                            @*<div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <ui-select class="form-control form-white" ng-model="frmReportMPOWisePrescription.ProdType" theme="select2" ng-cloak>
+                                                            <ui-select-match placeholder="">{{$select.selected.TYPE_NAME}}</ui-select-match>
+                                                            <ui-select-choices repeat="prodType.TYPE as prodType in ProdTypes | propsFilter: {TYPE_NAME: $select.search, TYPE: $select.search}">
+                                                                <div ng-bind-html="prodType.TYPE_NAME | highlight: $select.search"></div>
+                                                            </ui-select-choices>
+                                                        </ui-select>
+                                                    </div>
+                                                </div>*@
+                                            @*<select id="RequisitionNo" name="RequisitionNo" ng-model="RequisitionNo" class="RequiredField form-control"><option value="">Please Select</option></select>*@
+                                            @* <input type="text" class="form-control" id="RequisitionNo" name="RequisitionNo" ng-model="RequisitionNo">*@
+                                            <input type="text" class="form-control" id="RequisitionNo" name="RequisitionNo" ng-model="RequisitionNo" style="display: none;">
+                                            <input type="text" class="form-control" id="Id" name="Id" ng-model="Id" style="display: none;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        @*</div>*@
+    </div>
+}
+<script>
+    $('.datepicker').datepicker({
+        todayBtn: "linked",
+        autoclose: true,
+        orientation: 'bottom',
+        todayHighlight: true,
+        format: 'dd/mm/yyyy',
+        changeMonth: true,
+        changeYear: true
+    })
+
+</script>
