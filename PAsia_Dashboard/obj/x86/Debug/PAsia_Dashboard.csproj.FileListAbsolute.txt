@@ -224,19 +224,6 @@ F:\Project\PAsia_TFS\PAsia_Dashboard\bin\System.Web.WebPages.Deployment.dll
 F:\Project\PAsia_TFS\PAsia_Dashboard\bin\System.Web.WebPages.dll
 F:\Project\PAsia_TFS\PAsia_Dashboard\bin\System.Web.WebPages.Razor.dll
 F:\Project\PAsia_TFS\PAsia_Dashboard\bin\WebGrease.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.Controllers.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.Prompting.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
-F:\Project\PAsia_TFS\PAsia_Dashboard\bin\stdole.dll
 F:\Project\PAsia_TFS\PAsia_Dashboard\bin\Microsoft.AI.DependencyCollector.xml
 F:\Project\PAsia_TFS\PAsia_Dashboard\bin\Microsoft.AI.ServerTelemetryChannel.xml
 F:\Project\PAsia_TFS\PAsia_Dashboard\bin\Microsoft.AI.Web.xml
@@ -254,6 +241,6 @@ F:\Project\PAsia_TFS\PAsia_Dashboard\bin\System.Web.WebPages.Deployment.xml
 F:\Project\PAsia_TFS\PAsia_Dashboard\bin\System.Web.WebPages.Razor.xml
 F:\Project\PAsia_TFS\PAsia_Dashboard\bin\Antlr3.Runtime.pdb
 F:\Project\PAsia_TFS\PAsia_Dashboard\bin\Newtonsoft.Json.xml
+F:\Project\PAsia_TFS\PAsia_Dashboard\obj\x86\Debug\PAsia_Dashboard.csprojResolveAssemblyReference.cache
 F:\Project\PAsia_TFS\PAsia_Dashboard\obj\x86\Debug\PAsia_Dashboard.dll
 F:\Project\PAsia_TFS\PAsia_Dashboard\obj\x86\Debug\PAsia_Dashboard.pdb
-F:\Project\PAsia_TFS\PAsia_Dashboard\obj\x86\Debug\PAsia_Dashboard.csprojResolveAssemblyReference.cache

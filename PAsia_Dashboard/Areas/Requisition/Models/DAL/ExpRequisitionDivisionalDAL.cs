@@ -25,14 +25,69 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
             {
                 string deptCode = System.Web.HttpContext.Current.Session["DEPARTMENT_CODE"].ToString();
                 string empCode = HttpContext.Current.Session["EMPLOYEE_CODE"].ToString();
-                string qry = "SELECT DISTINCT MST_ID, REQUISITION_NO,  REQUISITION_TYPE,  EXPENDITURE_MONTH, " +
-                    " PAY_TO_NAME, PAY_TO_DESIG, PAYMENT_PLACE,PREPARED_BY_NAME,PREPARED_BY_DESIG,PREPARED_DATE,PREPARED_REMARKS," +
-                    " NVL(CHECKED_STATUS,'Pending') CHECKED_STATUS,NVL(DIVISIONAL_STATUS,'Pending') DIVISIONAL_STATUS,NVL(VERIFIED_STATUS,'Pending') VERIFIED_STATUS,NVL( RECOMMENDED_STATUS,'Pending') RECOMMENDED_STATUS," +
-                    " NVL(APPROVED_STATUS,'Pending') APPROVED_STATUS,CHECKED_DATE,VERIFIED_DATE," +
-                    " RECOMMENDED_DATE,APPROVED_DATE, NVL(PREPARED_BY_CONFIRM,'No') PREPARED_BY_CONFIRM FROM VW_EXP_REQUISITION " +
-                    " A INNER JOIN SC_EMPLOYEE B ON A.PREPARED_BY=B.EMP_CODE " +
-                    " WHERE 1=1 AND B.DEPT_CODE IN ('19','22','23','31','32') AND PREPARED_BY IS NOT NULL AND PREPARED_BY_CONFIRM IS NOT NULL AND PREPARED_BY_DEPARTMENT IN ('19','22','23','31','32') AND DIVISIONAL_STATUS IS NULL AND VERIFIED_STATUS IS NULL  " + param + " " +
-                    " ORDER BY    REQUISITION_NO DESC";
+                string qry = "  SELECT DISTINCT MST_ID," +
+                                "                  REQUISITION_NO," +
+                                "                  REQUISITION_TYPE," +
+                                "                  EXPENDITURE_MONTH," +
+                                "                  PAY_TO_NAME," +
+                                "                  PAY_TO_DESIG," +
+                                "                  PAYMENT_PLACE," +
+                                "                  PREPARED_BY_NAME," +
+                                "                  PREPARED_BY_DESIG," +
+                                "                  PREPARED_DATE," +
+                                "                  PREPARED_REMARKS," +
+                                "                  NVL (CHECKED_STATUS, 'Pending') CHECKED_STATUS," +
+                                "                  NVL (DIVISIONAL_STATUS, 'Pending') DIVISIONAL_STATUS," +
+                                "                  NVL (VERIFIED_STATUS, 'Pending') VERIFIED_STATUS," +
+                                "                  NVL (RECOMMENDED_STATUS, 'Pending') RECOMMENDED_STATUS," +
+                                "                  NVL (APPROVED_STATUS, 'Pending') APPROVED_STATUS," +
+                                "                  CHECKED_DATE," +
+                                "                  VERIFIED_DATE," +
+                                "                  RECOMMENDED_DATE," +
+                                "                  APPROVED_DATE," +
+                                "                  NVL (PREPARED_BY_CONFIRM, 'No') PREPARED_BY_CONFIRM" +
+                                "    FROM VW_EXP_REQUISITION A" +
+                                "         INNER JOIN SC_EMPLOYEE B ON A.PREPARED_BY = B.EMP_CODE" +
+                                "   WHERE     1 = 1" +
+                                "         AND B.DEPT_CODE IN ('19','23', '31', '32')" +
+                                "         AND PREPARED_BY IS NOT NULL" +
+                                "         AND PREPARED_BY_CONFIRM IS NOT NULL" +
+                                "         AND PREPARED_BY_DEPARTMENT IN ('19', '23', '31', '32')" +
+                                "         AND DIVISIONAL_STATUS IS NULL" +
+                                "         AND VERIFIED_STATUS IS NULL" +
+                                " UNION ALL " +
+                                " SELECT DISTINCT MST_ID," +
+                                "                  REQUISITION_NO," +
+                                "                  REQUISITION_TYPE," +
+                                "                  EXPENDITURE_MONTH," +
+                                "                  PAY_TO_NAME," +
+                                "                  PAY_TO_DESIG," +
+                                "                  PAYMENT_PLACE," +
+                                "                  PREPARED_BY_NAME," +
+                                "                  PREPARED_BY_DESIG," +
+                                "                  PREPARED_DATE," +
+                                "                  PREPARED_REMARKS," +
+                                "                  NVL (CHECKED_STATUS, 'Pending') CHECKED_STATUS," +
+                                "                  NVL (DIVISIONAL_STATUS, 'Pending') DIVISIONAL_STATUS," +
+                                "                  NVL (VERIFIED_STATUS, 'Pending') VERIFIED_STATUS," +
+                                "                  NVL (RECOMMENDED_STATUS, 'Pending') RECOMMENDED_STATUS," +
+                                "                  NVL (APPROVED_STATUS, 'Pending') APPROVED_STATUS," +
+                                "                  CHECKED_DATE," +
+                                "                  VERIFIED_DATE," +
+                                "                  RECOMMENDED_DATE," +
+                                "                  APPROVED_DATE," +
+                                "                  NVL (PREPARED_BY_CONFIRM, 'No') PREPARED_BY_CONFIRM" +
+                                "    FROM VW_EXP_REQUISITION A" +
+                                "         INNER JOIN SC_EMPLOYEE B ON A.PREPARED_BY = B.EMP_CODE" +
+                                "   WHERE     1 = 1" +
+                                "         AND B.DEPT_CODE IN ('22')" +
+                                "         AND PREPARED_BY IS NOT NULL" +
+                                "         AND PREPARED_BY_CONFIRM IS NOT NULL" +
+                                "         AND PREPARED_BY_DEPARTMENT IN ('22')" +
+                                "         AND DIVISIONAL_STATUS IS NULL" +
+                                "         AND VERIFIED_STATUS IS NULL" +
+                                "         AND CHECKED_STATUS='Approved'" +
+                                " ORDER BY REQUISITION_NO DESC";
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
                             select new ExpReqPrepareMst
