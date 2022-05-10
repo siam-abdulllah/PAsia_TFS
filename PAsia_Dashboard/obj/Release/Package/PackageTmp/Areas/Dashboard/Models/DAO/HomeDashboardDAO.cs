@@ -101,8 +101,8 @@ namespace PAsia_Dashboard.Areas.Dashboard.Models.DAO
                 //homeDashboard.FuxtilVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0055','C0056','C0057','C0058','C0059','C0060','C0061','C0062')", "DATE_WISE_PROD_SALES");
                 //homeDashboard.SweetDropsVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0191')", "DATE_WISE_PROD_SALES");
                // homeDashboard.SweetDropsQTY = GetProductSalesQTY(accessLevelParam + " AND PRODUCT_CODE IN ('C0191')", "DATE_WISE_PROD_SALES");
-                homeDashboard.GavicoolVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0198')", "DATE_WISE_PROD_SALES");
-                homeDashboard.GavicoolQTY = GetProductSalesQTY(accessLevelParam + " AND PRODUCT_CODE IN ('C0198')", "DATE_WISE_PROD_SALES");
+                homeDashboard.GavicoolVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0198','CO209')", "DATE_WISE_PROD_SALES");
+                homeDashboard.GavicoolNoOfCustomer = GetGavicoolNoOfCustomer(accessLevelParam);
                 //homeDashboard.SweetDropsRtrn = GetProductRtrnQTY(accessLevelParam + " AND PRODUCT_CODE IN ('C0191')");
                 homeDashboard.AllProdRtrn = GetAllProductRtrnQTY(accessLevelParam);
                 homeDashboard.DCCTotalSale = GetDCC_Sale(accessLevelParam);
@@ -723,6 +723,36 @@ namespace PAsia_Dashboard.Areas.Dashboard.Models.DAO
 
             }
             return EzylifeNoOfCustomer;
+        }
+
+        public GavicoolNoOfCustomer GetGavicoolNoOfCustomer(string param)
+        {
+
+            //string EzylifeNoOfCustomerQry = "SELECT SUM(CUSTOMER_CODE) CM_NO_OF_CUSTOMER FROM VW_EZYLIFE_NO_OF_CUSTOMER WHERE YYYYMM=to_char(SYSDATE,'YYYYMM') " + param + " ";
+            string GavicoolNoOfCustomerQry = "SELECT SUM (CM_NO_OF_CUSTOMER) CM_NO_OF_CUSTOMER," +
+                                            "       SUM (LM_NO_OF_CUSTOMER) LM_NO_OF_CUSTOMER" +
+                                            "  FROM (SELECT COUNT(DISTINCT CUSTOMER_CODE) CM_NO_OF_CUSTOMER, 0 LM_NO_OF_CUSTOMER" +
+                                            "          FROM VW_GAVICOOL_CM_NO_OF_CUSTOMER" +
+                                            "         WHERE 1=1" +
+                                            //" AND YYYYMM = TO_CHAR (SYSDATE, 'YYYYMM')" +
+                                            "        UNION ALL" +
+                                            "        SELECT 0 CM_NO_OF_CUSTOMER, COUNT(DISTINCT CUSTOMER_CODE) LM_NO_OF_CUSTOMER" +
+                                            "          FROM VW_GAVICOOL_LM_NO_OF_CUSTOMER" +
+                                            "         WHERE 1=1 " +
+                                            //" AND YYYYMM =" +
+                                            //"                  TO_CHAR (ADD_MONTHS (TRUNC (SYSDATE, 'MONTH'), -1)," +
+                                            //"                           'YYYYMM')" +
+                                            ")";
+            GavicoolNoOfCustomer GavicoolNoOfCustomer = new GavicoolNoOfCustomer();
+            _dt = _dbHelper.GetDataTable(_dbConnection.SAConnStrReader("Dashboard"), GavicoolNoOfCustomerQry);
+            if (_dt.Rows.Count > 0)
+            {
+                _row = _dt.Rows[0];
+                GavicoolNoOfCustomer.CM_GAVICOOL_NO_OF_CUSTOMER = _row["CM_NO_OF_CUSTOMER"].ToString();
+                GavicoolNoOfCustomer.LM_GAVICOOL_NO_OF_CUSTOMER = _row["LM_NO_OF_CUSTOMER"].ToString();
+
+            }
+            return GavicoolNoOfCustomer;
         }
         public XelproNoOfCustomer GetXelproNoOfCustomer(string param)
         {

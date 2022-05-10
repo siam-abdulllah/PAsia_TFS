@@ -154,6 +154,7 @@ namespace PAsia_Dashboard.Areas.Dashboard.Models.BEL
         public AllProdRtrn AllProdRtrn { get;  set; }
         public ProductValueSale GavicoolVal { get; internal set; }
         public ProductQTYSale GavicoolQTY { get; internal set; }
+        public GavicoolNoOfCustomer GavicoolNoOfCustomer { get; set; }
     }
     public class DashboardChart
     {
@@ -176,6 +177,13 @@ namespace PAsia_Dashboard.Areas.Dashboard.Models.BEL
     {
         public string CM_EZYLIFE_NO_OF_CUSTOMER;
         public string LM_EZYLIFE_NO_OF_CUSTOMER;
+
+    }
+
+    public class GavicoolNoOfCustomer
+    {
+        public string CM_GAVICOOL_NO_OF_CUSTOMER;
+        public string LM_GAVICOOL_NO_OF_CUSTOMER;
 
     }
     public class SweetDropsRtrn
