@@ -101,7 +101,7 @@ namespace PAsia_Dashboard.Areas.Dashboard.Models.DAO
                 //homeDashboard.FuxtilVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0055','C0056','C0057','C0058','C0059','C0060','C0061','C0062')", "DATE_WISE_PROD_SALES");
                 //homeDashboard.SweetDropsVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0191')", "DATE_WISE_PROD_SALES");
                // homeDashboard.SweetDropsQTY = GetProductSalesQTY(accessLevelParam + " AND PRODUCT_CODE IN ('C0191')", "DATE_WISE_PROD_SALES");
-                homeDashboard.GavicoolVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0198','CO209')", "DATE_WISE_PROD_SALES");
+                homeDashboard.GavicoolVal = GetProductSalesValue(accessLevelParam + " AND PRODUCT_CODE IN ('C0198','C0209')", "DATE_WISE_PROD_SALES");
                 homeDashboard.GavicoolNoOfCustomer = GetGavicoolNoOfCustomer(accessLevelParam);
                 //homeDashboard.SweetDropsRtrn = GetProductRtrnQTY(accessLevelParam + " AND PRODUCT_CODE IN ('C0191')");
                 homeDashboard.AllProdRtrn = GetAllProductRtrnQTY(accessLevelParam);
