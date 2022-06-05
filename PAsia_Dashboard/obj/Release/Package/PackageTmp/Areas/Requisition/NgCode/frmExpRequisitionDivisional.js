@@ -150,7 +150,9 @@
         { name: 'PrepareDate', displayName: "Prepared Date" },
         { name: 'PreparedByConfirm', displayName: "Confirm" },
 
+        { name: 'CheckedName', displayName: "Checked Name", visible: false },
         { name: 'CheckedStatus', displayName: "Checked Status" },
+        { name: 'CheckedDesig', displayName: "CheckedDesig", visible: false },
         { name: 'CheckedRemarks', displayName: "Checked Remarks", visible: false },
         { name: 'CheckedDate', displayName: "Checked Date", visible: false },
 

@@ -36,6 +36,8 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                 "                  PREPARED_BY_DESIG," +
                                 "                  PREPARED_DATE," +
                                 "                  PREPARED_REMARKS," +
+                                "                  CHECKED_BY_NAME,"+
+                                "                  CHECKED_BY_DESIG,"+
                                 "                  NVL (CHECKED_STATUS, 'Pending') CHECKED_STATUS," +
                                 "                  NVL (DIVISIONAL_STATUS, 'Pending') DIVISIONAL_STATUS," +
                                 "                  NVL (VERIFIED_STATUS, 'Pending') VERIFIED_STATUS," +
@@ -67,6 +69,8 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                 "                  PREPARED_BY_DESIG," +
                                 "                  PREPARED_DATE," +
                                 "                  PREPARED_REMARKS," +
+                                "                  CHECKED_BY_NAME," +
+                                "                  CHECKED_BY_DESIG," +
                                 "                  NVL (CHECKED_STATUS, 'Pending') CHECKED_STATUS," +
                                 "                  NVL (DIVISIONAL_STATUS, 'Pending') DIVISIONAL_STATUS," +
                                 "                  NVL (VERIFIED_STATUS, 'Pending') VERIFIED_STATUS," +
@@ -102,6 +106,10 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
                                 PrepareName = row["PREPARED_BY_NAME"].ToString(),
                                 PrepareDesig = row["PREPARED_BY_DESIG"].ToString(),
                                 PrepareDate = row["PREPARED_DATE"].ToString(),
+
+                                CheckedDesig = row["CHECKED_BY_DESIG"].ToString(),
+                                CheckedName = row["CHECKED_BY_NAME"].ToString(),
+
                                 CheckedStatus = row["CHECKED_STATUS"].ToString(),
                                 CheckedDate = row["CHECKED_DATE"].ToString(),
 
