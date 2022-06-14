@@ -137,7 +137,7 @@
                                 <div class="col-md-3">
                                     <ui-select class="form-control form-white" ng-model="frmExpRequisitionPrepare.PayTo" theme="select2" ng-cloak required>
                                         <ui-select-match placeholder="-- Please Select --">{{$select.selected.PayToName}}</ui-select-match>
-                                        <ui-select-choices repeat="payTos in PayTos | propsFilter: {PayToName: $select.search,PayToCode: $select.search,PayToDesig: $select.search} | limitTo: 100" value="{{$selected.PayTo}}">
+                                        <ui-select-choices repeat="payTos in PayTos | propsFilter: {PayToName: $select.search,PayToCode: $select.search,PayToDesig: $select.search} | limitTo: 100 " value="{{$selected.PayTo}}">
                                             <div ng-bind-html="payTos.PayToName | highlight: $select.search"></div>
                                             <small>
                                                 <b>Code: </b><span ng-bind-html="''+payTos.PayToCode | highlight: $select.search"></span> &nbsp;&nbsp;&nbsp;
@@ -294,7 +294,7 @@
                 <div class="modal-footer">
                 </div>
             </div>
-        </div>
+        </div>+
     </div>
     <div class="modal fade" id="ExpReqPrepareMstModal">
         <div class="modal-dialog modal-lg">

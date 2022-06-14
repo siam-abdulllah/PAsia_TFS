@@ -40,8 +40,11 @@ namespace PAsia_Dashboard.Areas.Requisition.Controllers
         [HttpPost]
         public ActionResult GetPayTo(string param)
         {
-            var data = _expRequisitionPrepareDAL.GetPayTo(param);
-            return Json(new { Data = data, Status = "Ok" });
+            var listData = _expRequisitionPrepareDAL.GetPayTo(param);
+            var data = Json(listData, JsonRequestBehavior.AllowGet);
+            data.MaxJsonLength = int.MaxValue;
+            return data;
+            //return Json(new { Data = data, Status = "Ok" });
         } 
         [HttpPost]
         public ActionResult GetPaymentPlace(string param)

@@ -143,7 +143,7 @@ namespace PAsia_Dashboard.Areas.Requisition.Models.DAL
             try
             {
                 string qry = "SELECT A.EMPLOYEE_NAME,A.EMPLOYEE_CODE,B.DESIG_NAME FROM EMPLOYEE_INFO A,SC_DESIGNATION B WHERE A.DESIGNATION=B.DESIG_CODE AND A.STATUS='A' " +
-                    " AND A.POSTING_LOCATION IN ('D','H','F','R','Z') ORDER BY A.EMPLOYEE_NAME";
+                    " AND A.POSTING_LOCATION IN ('D','H','F','R','Z','A','T' ) ORDER BY A.EMPLOYEE_NAME ";
                 DataTable dt = dbHelper.GetDataTable(dbConnection.SAConnStrReader("Sales"), qry);
                 var item = (from DataRow row in dt.Rows
                             select new ExpReqPrepareMst

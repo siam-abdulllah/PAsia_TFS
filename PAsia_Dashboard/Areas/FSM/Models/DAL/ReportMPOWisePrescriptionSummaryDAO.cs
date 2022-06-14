@@ -131,6 +131,12 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_XTRACALD = row["TOTAL_XTRACALD"].ToString(),
                                     TOTAL_TELMIFAST = row["TOTAL_TELMIFAST"].ToString(),
                                     TOTAL_LEVAMOLIN = row["TOTAL_LEVAMOLIN"].ToString(),
+
+                                    TOTAL_PYRICA = row["TOTAL_PYRICA"].ToString(),
+                                    TOTAL_PRECID = row["TOTAL_PRECID"].ToString(),
+
+
+
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                     
                                 }).ToList();
@@ -205,6 +211,10 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_XTRACALD = row["TOTAL_XTRACALD"].ToString(),
                                     TOTAL_TELMIFAST = row["TOTAL_TELMIFAST"].ToString(),
                                     TOTAL_LEVAMOLIN = row["TOTAL_LEVAMOLIN"].ToString(),
+
+                                    TOTAL_PYRICA = row["TOTAL_PYRICA"].ToString(),
+                                    TOTAL_PRECID = row["TOTAL_PRECID"].ToString(),
+
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
@@ -277,6 +287,10 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_XTRACALD = row["TOTAL_XTRACALD"].ToString(),
                                     TOTAL_TELMIFAST = row["TOTAL_TELMIFAST"].ToString(),
                                     TOTAL_LEVAMOLIN = row["TOTAL_LEVAMOLIN"].ToString(),
+
+                                    TOTAL_PYRICA = row["TOTAL_PYRICA"].ToString(),
+                                    TOTAL_PRECID = row["TOTAL_PRECID"].ToString(),
+
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;
@@ -349,6 +363,10 @@ namespace PAsia_Dashboard.Areas.FSM.Models.DAL.DAO
                                     TOTAL_XTRACALD = row["TOTAL_XTRACALD"].ToString(),
                                     TOTAL_TELMIFAST = row["TOTAL_TELMIFAST"].ToString(),
                                     TOTAL_LEVAMOLIN = row["TOTAL_LEVAMOLIN"].ToString(),
+
+                                    TOTAL_PYRICA = row["TOTAL_PYRICA"].ToString(),
+                                    TOTAL_PRECID = row["TOTAL_PRECID"].ToString(),
+
                                     TOTAL_OTHERS = row["TOTAL_OTHERS"].ToString()
                                 }).ToList();
                         return item;

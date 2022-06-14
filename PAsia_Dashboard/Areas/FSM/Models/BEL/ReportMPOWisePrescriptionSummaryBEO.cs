@@ -45,6 +45,10 @@ namespace PAsia_Dashboard.Areas.FSM.Models.BEL.BEO
         public String TOTAL_XTRACALD { get; set; }
         public String TOTAL_TELMIFAST { get; set; }
 
-    public String TOTAL_LEVAMOLIN { get; set; }
+        public String TOTAL_PYRICA { get; set; }
+        public String TOTAL_PRECID { get; set; }
+
+
+        public String TOTAL_LEVAMOLIN { get; set; }
     }
 }

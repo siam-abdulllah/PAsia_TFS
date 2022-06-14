@@ -76,13 +76,13 @@
             method: "POST",
             url: MyApp.rootPath + "ExpRequisitionPrepare/GetPayTo"
         }).then(function (response) {
-            if (response.data.Status === "Ok") {
-                if (response.data.Data.length > 0) {
-                    $scope.PayTos = response.data.Data;
-                }
-            } else {
-                toastr.warning(response.data.Status, { timeOut: 2000 });
-            }
+            //if (response.data.Status === "Ok") {
+                if (response.data.length > 0) {
+                    $scope.PayTos = response.data;
+              }
+            //} else {
+            //    toastr.warning(response.data.Status, { timeOut: 2000 });
+            //}
         },
             function (response) {
                 if (response.status === 404) {
