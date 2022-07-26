@@ -55,8 +55,14 @@ namespace PAsia_Dashboard.Areas.Requisition.Controllers
         [HttpPost]
         public ActionResult GetExpReqMstList(string param)
         {
-            var data = _expRequisitionPrepareDAL.GetExpReqMstList(param);
-            return Json(new { Data = data, Status = "Ok" });
+            //var data = _expRequisitionPrepareDAL.GetExpReqMstList(param);
+            //return Json(new { Data = data, Status = "Ok" });
+
+            var listData = _expRequisitionPrepareDAL.GetExpReqMstList(param);
+            var data = Json(listData, JsonRequestBehavior.AllowGet);
+            data.MaxJsonLength = int.MaxValue;
+            return data;
+
         }
         
         [HttpPost]

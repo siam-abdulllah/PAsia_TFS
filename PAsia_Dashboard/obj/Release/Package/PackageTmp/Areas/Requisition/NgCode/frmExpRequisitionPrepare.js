@@ -232,16 +232,16 @@
             url: MyApp.rootPath + "ExpRequisitionPrepare/GetExpReqMstList",
             data: { param: param }
         }).then(function (response) {
-            if (response.data.Status === "Ok") {
-                if (response.data.Data.length > 0) {
+            //if (response.data.Status === "Ok") {
+                if (response.data.length > 0) {
                     $('#ExpReqPrepareMstModal').modal('show');
-                    $scope.gridExpReqPrepareMstOptions.data = response.data.Data;
+                    $scope.gridExpReqPrepareMstOptions.data = response.data;
                 } else {
                     toastr.warning("No Data Found!", { timeOut: 2000 });
                 }
-            } else {
-                toastr.warning(response.data.Status, { timeOut: 2000 });
-            }
+            //} else {
+               // toastr.warning(response.data.Status, { timeOut: 2000 });
+            //}
         },
             function (response) {
                 if (response.status === 404) {
